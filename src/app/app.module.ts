@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CanboComponent } from './components/canbo/canbo.component';
 import { TrangchuComponent } from './components/trangchu/trangchu.component';
-import { DanhSachPhongComponent } from './danhsachphong/danhsachphong.component';
+import { DanhSachPhongComponent } from './components/danhsachphong/danhsachphong.component';
 import { SwiperModule } from 'swiper/angular';
 
 @NgModule({

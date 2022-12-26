@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CanboComponent } from './components/canbo/canbo.component';
 import { LoginComponent } from './components/login/login.component';
 import { TrangchuComponent } from './components/trangchu/trangchu.component';
-import { DanhSachPhongComponent } from './danhsachphong/danhsachphong.component';
+import { DanhSachPhongComponent } from './components/danhsachphong/danhsachphong.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
