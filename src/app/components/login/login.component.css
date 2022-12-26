@@ -1,0 +1,36 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+h3, strong{
+    font-family: 'Merienda', cursive;
+    text-align: center;
+}
+.content-login{
+    margin-top: 90px;
+}
+.form-control{
+    border-bottom: 2px grey solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 12px;
+    border-radius: 0px;
+}
+.forgot-pass{
+    margin-left: 150px;
+    color: black;
+    opacity: 0.8;
+    font-size: 12px;
+    
+}
+.caption{
+    color: black;
+    opacity: 0.8;
+    font-size: 12px;
+    margin-left: 10px;
+}
+input[type="submit"]{
+    background-color: blue;
+    opacity: 0.7;
+    width: 100%;
+}

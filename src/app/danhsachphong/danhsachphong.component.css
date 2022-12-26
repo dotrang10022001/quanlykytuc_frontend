@@ -1,0 +1,12 @@
+.content-list-room p{
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Merienda', cursive;
+}
+.content-list-room{
+    position: relative;
+}
+#btnThem{
+    position: absolute;
+    right: 10px;
+}
