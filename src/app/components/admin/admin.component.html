@@ -1,0 +1,67 @@
+<div class="content-admin">
+    <h3 class="title">
+        Cấp tài khoản
+    </h3>
+    <div class="main-content d-flex">
+
+        <div class="display-data">
+            <div id="search">
+                <input type="text" placeholder="Tìm kiếm" autocomplete="off" class="me-2" id="input_search"
+                    [(ngModel)]="searchText" />
+                <span><i class='bx bx-search-alt-2'></i></span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên đăng nhập</th>
+                        <th>Mật khẩu</th>
+                        <th>Vai trò</th>
+                        <th>Mã người dùng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let taikhoan of dsTaiKhoan | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                        <td>{{taikhoan.tendangnhap}}</td>
+                        <td style="-webkit-text-security: disc">{{taikhoan.matkhau}}</td>
+                        <td>{{taikhoan.vaitro}}</td>
+                        <td>{{taikhoan.manguoidung}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+            </div>
+        </div>
+        <div class="input-data">
+            <h3>Tài khoản</h3>
+            <form>
+                <div class="form-group mb-3">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Mật khẩu</label>
+                    <input type="password" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Vai trò</label>
+                    <select class="form-select">
+                        <option selected>Chọn...</option>
+                        <option value="Sinh viên">Sinh viên</option>
+                        <option value="Cán bộ">Cán bộ</option>
+                        <option value="Quản trị viên">Quản trị viên</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Mã người dùng</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="list-operation">
+                    <button class="btn btn-outline-secondary me-2" (click)="themTaiKhoan()"><i
+                            class='bx bx-book-add me-1'></i>Thêm</button>
+                    <button class="btn btn-outline-secondary"><i class='bx bx-trash me-1'></i>Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

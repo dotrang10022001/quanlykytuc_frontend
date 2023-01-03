@@ -1,0 +1,75 @@
+<div class="content-dichvu">
+    <h3 class="title">
+        Dịch vụ
+    </h3>
+    <div class="d-flex SearchAndAdd">
+        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
+                class='bx bx-search-alt-2'></i></span>
+        <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
+            data-bs-target="#themDichVuModal">
+            <i class='bx bx-book-add me-1'></i>Thêm dịch vụ
+        </button>
+    </div>
+    <div class="main-content row">
+        <div class="card col-lg-6" *ngFor="let dv of dsDichVu | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+            <div class="card-body d-flex" data-bs-toggle="tooltip" data-bs-placement="top" title="{{dv.ghichu}}">
+                <div class="image"><img src="../../../assets/images/giatla.jpg" width="100%" height="100%"/></div>
+                <div class="content">
+                    <div class="card-head">{{dv.tendichvu}}</div>
+                    <div class="card-description">{{dv.mota}}</div>
+                    <div class="list-content d-flex">
+                        <div class="dongia">Đơn giá: <b>{{dv.dongia}} VNĐ/{{dv.donvitinh}}</b></div>
+                        <div class="list-icon">
+                            <span><i class='bx bxs-edit-alt me-1'></i></span>
+                            <span><i class='bx bxs-trash' ></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="themDichVuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm dịch vụ</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Mã dịch vụ</span>
+                    <input type="text" class="form-control" name="madichvu">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Tên dịch vụ</span>
+                    <input type="text" class="form-control" name="tendichvu">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Mô tả</span>
+                    <textarea class="form-control" name="mota"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Đơn vị tính</span>
+                    <input type="text" class="form-control" name="donvitinh">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Đơn giá</span>
+                    <input type="number" class="form-control" name="dongia">
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="anh">Ảnh</label>
+                    <input type="file" class="form-control" id="anh" name="anh" accept=".jpg, .png">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-outline-success">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>

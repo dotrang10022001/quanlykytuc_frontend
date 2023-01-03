@@ -6,8 +6,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CanboComponent } from './components/canbo/canbo.component';
 import { TrangchuComponent } from './components/trangchu/trangchu.component';
-import { DanhSachPhongComponent } from './components/danhsachphong/danhsachphong.component';
 import { SwiperModule } from 'swiper/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { PhongComponent } from './components/phong/phong.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ThongtincanhanComponent } from './components/thongtincanhan/thongtincanhan.component';
+import { PhananhComponent } from './components/phananh/phananh.component';
+import { DichvuComponent } from './components/dichvu/dichvu.component';
+import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
+import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -15,12 +26,23 @@ import { SwiperModule } from 'swiper/angular';
     LoginComponent,
     CanboComponent,
     TrangchuComponent,
-    DanhSachPhongComponent
+    PhongComponent,
+    AdminComponent,
+    ThongtincanhanComponent,
+    PhananhComponent,
+    DichvuComponent,
+    LoaiphongComponent,
+    DangkyphongComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule
+    SwiperModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

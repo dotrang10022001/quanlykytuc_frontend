@@ -1,5 +1,5 @@
 <div>
-    <nav *ngIf="role=='khach'">
+    <nav>
         <ul>
             <li>
                 <a routerLink="trangchu" class="logo">
@@ -20,36 +20,7 @@
                 </a>
             </li>
             <li>
-                <a routerLink="login">
-                    <i class='bx bx-log-in'></i>
-                    <span class="nav-item">Đăng nhập</span>
-                </a>
-            </li>
-    
-        </ul>
-    </nav>
-    <nav *ngIf="role!='khach'">
-        <ul>
-            <li>
-                <a routerLink="trangchu" class="logo">
-                    <img src="../assets/images/logo.jpg" alt="">
-                    <span class="nav-item">Quản lý ký túc xá</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="trangchu">
-                    <i class='bx bx-home'></i>
-                    <span class="nav-item">Trang chủ</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="danhsachdangky">
-                    <i class='bx bx-user-plus'></i>
-                    <span class="nav-item">Danh sách đăng ký</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="thongtinphong">
+                <a routerLink="phong">
                     <i class='bx bx-bed'></i>
                     <span class="nav-item">Thông tin phòng</span>
                 </a>
@@ -67,6 +38,12 @@
                 </a>
             </li>
             <li>
+                <a routerLink="loaiphong">
+                    <i class='bx bx-leaf'></i>
+                    <span class="nav-item">Danh sách loại phòng</span>
+                </a>
+            </li>
+            <li>
                 <a routerLink="phananh">
                     <i class='bx bx-paper-plane'></i>
                     <span class="nav-item">Phản ánh</span>
@@ -79,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a routerLink="quantri" *ngIf="role=='canbo'">
+                <a routerLink="admin">
                     <i class='bx bx-cog'></i>
                     <span class="nav-item">Quản trị</span>
                 </a>

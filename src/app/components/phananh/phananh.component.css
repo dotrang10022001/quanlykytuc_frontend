@@ -1,6 +1,6 @@
-.content-canbo {
+.content-phananh {
     padding: 0 10px;
-    position: relative;
+    height: 100vh;
 }
 
 .title {
@@ -23,6 +23,10 @@
     border-bottom: solid 2px grey;
     width: 250px;
 }
+.search-wrap{
+    position: absolute;
+    right: 70px;
+}
 .SearchAndAdd span i{
     position: absolute;
     bottom: 0;
@@ -35,39 +39,46 @@
 }
 #btnThem{
     position: absolute;
-    right: 0;
+    left: 0;
 }
 
-.data-canbo {
-    margin-top: 10px;
+.data-phananh {
+    margin-top: 60px;
+    height: 500px;
     width: 95%;
     margin-left: auto;
     margin-right: auto;
 }
-th, td{
-    text-align: center;
+.decor{
+    width: 20%;
+    height: 100%;
 }
-table{
-    width: 100%;
-    margin-top: 20px;
-    background-color: white;
-    box-shadow: 8px 8px 4px rgb(173, 173, 173);
-}
-thead{
-    background-color: grey;
-    height: 40px;
-}
-td{
-    height: 80px;
-    border-bottom: solid 1px grey;
-}
-td img{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+.content{
+    width: 80%;
+    height: 100%;
 }
 span{
     cursor: pointer;
+}
+table{
+    width: 90%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+th, td{
+    text-align: center;
+}
+tr:nth-child(even){
+    background-color: rgb(207, 202, 202);
+}
+thead{
+    border-bottom: solid 2px black;
+    background-color: #dfe9f5;
+}
+.content{
+    position: relative;
 }
 .pagination{
     position: absolute;

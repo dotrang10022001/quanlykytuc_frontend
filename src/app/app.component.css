@@ -6,7 +6,7 @@
     border: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 body{
     background: #dfe9f5;
@@ -75,6 +75,7 @@ nav:hover{
 }
 .content{
     top: 0;
+    min-height: 100vh;
     position: absolute;
     width: calc(100% - 80px);
     margin-left: 80px;

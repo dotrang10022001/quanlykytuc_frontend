@@ -1,0 +1,163 @@
+<div class="content-phong">
+    <p class="title">Danh sách phòng</p>
+
+    <p class="fs-2" style="margin-left: 2.5%;">Tòa B3</p>
+
+    <div class="d-flex SearchAndAdd">
+        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
+                class='bx bx-search-alt-2'></i></span>
+        <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
+            data-bs-target="#themPhongModal">
+            <i class='bx bx-book-add me-1'></i>Thêm phòng
+        </button>
+    </div>
+
+    <div class="data-phong">
+        <div class="row">
+            <div class="col-lg-2 mb-2" *ngFor="let phong of dsPhong | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{phong.sophong}}</h3>
+                        <div class="d-flex justify-content-center list-icon">
+                            <span data-bs-toggle="modal" data-bs-target="#themSinhVienModal"><i class='bx bx-user-plus me-1'></i></span>
+                            <span data-bs-toggle="modal" data-bs-target="#xemDsSinhVienModal"><i class='bx bx-list-ul me-1'></i></span>
+                            <span><i class='bx bx-trash' ></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="themPhongModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm phòng</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label>Số phòng</label>
+                    <input type="text" class="form-control" name="sophong">
+                </div>
+                <div class="form-group mb-3">
+                    <label>Mã loại phòng</label>
+                    <select class="form-select">
+                        <option selected>Chọn...</option>
+                        <option *ngFor="let mlp of dsMaLoaiPhong" value="{{mlp.maloaiphong}}">{{mlp.maloaiphong}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-outline-success">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Modal add student-->
+<div class="modal fade" id="themSinhVienModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm sinh viên<nav></nav></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Mã sinh viên</span>
+                        <input type="text" class="form-control" name="masinhvien">
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Họ tên</span>
+                        <input type="text" class="form-control" name="hoten">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Giới tính</span>
+                    <div class="form-check form-check-inline mt-1 ms-4">
+                        <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="nam" />
+                        <label class="form-check-label" for="nam">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline mt-1">
+                        <input class="form-check-input" type="radio" name="gioitinh" id="nu" value="nu" />
+                        <label class="form-check-label" for="nu">Nữ</label>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Ngày sinh</span>
+                    <input type="date" class="form-control" name="ngaysinh">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Nơi thường trú</span>
+                    <textarea class="form-control" name="noithuongtru"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Email</span>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Lớp</span>
+                    <input type="text" class="form-control" name="lop">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Viện/Trường</span>
+                    <input type="text" class="form-control" name="vien">
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="anh">Ảnh</label>
+                    <input type="file" class="form-control" id="anh" name="anh">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-outline-success">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal xem danh sách sinh viên-->
+<div class="modal fade" id="xemDsSinhVienModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Danh sách sinh viên<nav></nav></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <table>
+                        <thead>
+                            <th>Mã sinh viên</th>
+                            <th>Họ tên</th>
+                            <th>Hành động</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sv of dsSinhVien">
+                                <td>{{sv.masinhvien}}</td>
+                                <td>{{sv.hoten}}</td>
+                                <td>
+                                    <span class="me-1"><i class='bx bxs-analyse'></i></span>
+                                    <span class="me-1"><i class='bx bxs-edit-alt'></i></span>
+                                    <span><i class='bx bxs-trash'></i></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+.content-loaiphong {
+    padding: 0 30px;
+}
+
+.title {
+    font-family: 'Merienda', cursive;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.main-content{
+    margin-top: 20px;
+    height: 500px;
+}
+.SearchAndAdd{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#search{
+    height: 40px;
+    background-color: #dfe9f5;
+    border: none;
+    border-bottom: solid 2px grey;
+    width: 250px;
+}
+.SearchAndAdd span i{
+    position: absolute;
+    bottom: 0;
+    font-size: 30px;
+    color: grey;
+}
+#search:focus{
+    outline: none;
+    border-bottom: solid 2px black;
+}
+#btnThem{
+    position: absolute;
+    right: 0;
+}
+.card{
+    height: 200px;
+    padding: 10px;
+    background-color: white;
+}
+.card-body{
+    width: 100%;
+    height: 100%;
+    padding:0;
+}
+.image{
+    width: 30%;
+    height: 100%;
+    background-color: red;
+}
+.content{
+    width: 70%;
+    height: 100%;
+    padding: 0 10px;
+}
+.card-head{
+    width: 100%;
+    height: 20%;
+    font-size: 20px;
+    font-family: 'Merienda', cursive;
+    font-weight: bold;
+    position: relative;
+}
+.card-description{
+    width: 100%;
+    height: 40%;
+}
+.list-content{
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+.list-icon{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.dongia{
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+}
+.card-capacity-object{
+    width: 100%;
+    height: 20%;
+    font-size: 14px;
+    position: relative;
+}
+.doituong{
+    position: absolute;
+    right: 0;
+}
+.pagination{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+}
+.toa{
+    position: absolute;
+    right: 0;
+    border: 2px solid grey;
+    width: 50px;
+    text-align: center;
+}
+strong{
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: normal;
+}

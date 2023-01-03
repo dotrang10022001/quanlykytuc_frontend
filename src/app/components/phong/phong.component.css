@@ -1,6 +1,5 @@
-.content-canbo {
+.content-phong {
     padding: 0 10px;
-    position: relative;
 }
 
 .title {
@@ -38,40 +37,51 @@
     right: 0;
 }
 
-.data-canbo {
-    margin-top: 10px;
+.data-phong {
+    margin-top: 20px;
     width: 95%;
     margin-left: auto;
     margin-right: auto;
 }
-th, td{
+.card{
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.card-body{
+    background: #7ab0f3;
+    border-radius: 10px;
+    padding: 0;
+    position: relative;
+}
+.card-title{
+    font-size: 18px;
+    font-family: 'Merienda', cursive;
     text-align: center;
+    margin-top: 5px;
 }
-table{
-    width: 100%;
-    margin-top: 20px;
-    background-color: white;
-    box-shadow: 8px 8px 4px rgb(173, 173, 173);
-}
-thead{
-    background-color: grey;
-    height: 40px;
-}
-td{
-    height: 80px;
-    border-bottom: solid 1px grey;
-}
-td img{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+.list-icon{
+    font-size: 18px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 span{
     cursor: pointer;
 }
+table{
+    width: 100%;
+}
+th, td{
+    text-align: center;
+}
+thead{
+    border-bottom: solid 2 px grey;
+}
 .pagination{
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     display: flex;
     justify-content: center;
     left: 0;

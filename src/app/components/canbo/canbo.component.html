@@ -1,15 +1,48 @@
 <div class="content-canbo">
     <p class="title">Danh sách cán bộ</p>
 
-    <!-- Button trigger modal -->
-    <div>
+    <div class="d-flex SearchAndAdd">
+        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
+                class='bx bx-search-alt-2'></i></span>
         <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
             data-bs-target="#themcanboModal">
             <i class='bx bx-book-add me-1'></i>Thêm cán bộ
         </button>
     </div>
+
     <div class="data-canbo">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã cán bộ</th>
+                    <th>Ảnh</th>
+                    <th>Họ tên</th>
+                    <th>Chức vụ</th>
+                    <th>Email</th>
+                    <th>Tòa</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let canbo of dsCanBo | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                    <td>{{canbo.macanbo}}</td>
+                    <td><img src="../../../assets/images/baove.jpg"></td>
+                    <td>{{canbo.hoten}}</td>
+                    <td>{{canbo.chucvu}}</td>
+                    <td>{{canbo.email}}</td>
+                    <td>{{canbo.toa}}</td>
+                    <td>
+                        <span class="me-1"><i class='bx bxs-analyse'></i></span>
+                        <span class="me-1"><i class='bx bxs-edit-alt'></i></span>
+                        <span><i class='bx bxs-trash'></i></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+</div>
+<div class="pagination">
+    <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="themcanboModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
