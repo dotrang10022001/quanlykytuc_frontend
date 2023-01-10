@@ -1,0 +1,79 @@
+.content-sinhvien {
+    padding: 0 10px;
+    position: relative;
+}
+
+.title {
+    font-family: 'Merienda', cursive;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.SearchAndAdd{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#search{
+    height: 40px;
+    background-color: #dfe9f5;
+    border: none;
+    border-bottom: solid 2px grey;
+    width: 250px;
+}
+.SearchAndAdd span i{
+    position: absolute;
+    bottom: 0;
+    font-size: 30px;
+    color: grey;
+}
+#search:focus{
+    outline: none;
+    border-bottom: solid 2px black;
+}
+#btnThem{
+    position: absolute;
+    right: 0;
+}
+
+.data-sinhvien {
+    margin-top: 10px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+th, td{
+    text-align: center;
+}
+table{
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 8px 8px 4px rgb(173, 173, 173);
+}
+thead{
+    background-color: grey;
+    height: 40px;
+}
+td{
+    height: 80px;
+    border-bottom: solid 1px grey;
+}
+td img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+span{
+    cursor: pointer;
+}
+.pagination{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+}

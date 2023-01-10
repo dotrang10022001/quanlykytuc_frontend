@@ -2,16 +2,16 @@
     <p class="title">Danh sách cán bộ</p>
 
     <div class="d-flex SearchAndAdd">
-        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
+        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText" /><span><i
                 class='bx bx-search-alt-2'></i></span>
         <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
-            data-bs-target="#themcanboModal">
+            data-bs-target="#themCanBoModal">
             <i class='bx bx-book-add me-1'></i>Thêm cán bộ
         </button>
     </div>
 
     <div class="data-canbo">
-        <table>
+        <table *ngIf="dsCanBo && dsCanBo.length > 0">
             <thead>
                 <tr>
                     <th>Mã cán bộ</th>
@@ -19,33 +19,34 @@
                     <th>Họ tên</th>
                     <th>Chức vụ</th>
                     <th>Email</th>
-                    <th>Tòa</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let canbo of dsCanBo | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
-                    <td>{{canbo.macanbo}}</td>
+                <tr
+                    *ngFor="let canbo of dsCanBo | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                    <td>{{canbo.maCanBo}}</td>
                     <td><img src="../../../assets/images/baove.jpg"></td>
-                    <td>{{canbo.hoten}}</td>
-                    <td>{{canbo.chucvu}}</td>
+                    <td>{{canbo.hoTen}}</td>
+                    <td>{{canbo.chucVu}}</td>
                     <td>{{canbo.email}}</td>
-                    <td>{{canbo.toa}}</td>
                     <td>
-                        <span class="me-1"><i class='bx bxs-analyse'></i></span>
+                        <span class="me-1" (click)="xemCanBo(canbo.id)" data-bs-toggle="modal"
+                            data-bs-target="#xemCanBoModal"><i class='bx bxs-analyse'></i></span>
                         <span class="me-1"><i class='bx bxs-edit-alt'></i></span>
                         <span><i class='bx bxs-trash'></i></span>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <p *ngIf="!dsCanBo || dsCanBo.length <= 0" class="text-center">Không có cán bộ nào</p>
     </div>
 </div>
-<div class="pagination">
+<div class="pagination" *ngIf="dsCanBo && dsCanBo.length > 0">
     <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="themcanboModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="themCanBoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,49 +54,107 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form #canBoForm="ngForm">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Mã cán bộ</span>
+                        <input type="text" class="form-control" name="macanbo" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Họ tên</span>
+                        <input type="text" class="form-control" name="hoten" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Giới tính</span>
+                        <div class="form-check form-check-inline mt-1 ms-4">
+                            <input class="form-check-input" type="radio" name="gioitinh" value="Nam"  ngModel/>
+                            <label class="form-check-label" for="nam">Nam</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-1">
+                            <input class="form-check-input" type="radio" name="gioitinh" value="Nữ" ngModel/>
+                            <label class="form-check-label" for="nu">Nữ</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Ngày sinh</span>
+                        <input type="date" class="form-control" name="ngaysinh" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Chức vụ</span>
+                        <input type="text" class="form-control" name="chucvu" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Email</span>
+                        <input type="email" class="form-control" name="email" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Số điện thoại</span>
+                        <input type="text" class="form-control" name="sodienthoai" ngModel>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="anh">Ảnh</label>
+                        <input type="file" class="form-control" id="anh" name="anh" ngModel>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-outline-success" (click)="themCanBo(canBoForm)">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="xemCanBoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Xem cán bộ</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Mã cán bộ</span>
-                    <input type="text" class="form-control" name="macanbo">
+                    <input type="text" class="form-control" name="macanbo" id="macanbo_view">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Họ tên</span>
-                    <input type="text" class="form-control" name="hoten">
+                    <input type="text" class="form-control" readonly="readonly" id="hoten_view">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Giới tính</span>
                     <div class="form-check form-check-inline mt-1 ms-4">
-                        <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="nam" />
+                        <input class="form-check-input" type="radio" value="Nam" name="gioitinh" id="nam_view" />
                         <label class="form-check-label" for="nam">Nam</label>
                     </div>
                     <div class="form-check form-check-inline mt-1">
-                        <input class="form-check-input" type="radio" name="gioitinh" id="nu" value="nu" />
+                        <input class="form-check-input" type="radio" value="Nữ" name="gioitinh" id="nu_view" />
                         <label class="form-check-label" for="nu">Nữ</label>
                     </div>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Ngày sinh</span>
-                    <input type="date" class="form-control" name="ngaysinh">
+                    <input type="date" class="form-control" readonly="readonly" id="ngaysinh_view">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Chức vụ</span>
-                    <input type="text" class="form-control" name="chucvu">
+                    <input type="text" class="form-control" readonly="readonly" id="chucvu_view">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Email</span>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" readonly="readonly" id="email_view">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Số điện thoại</span>
-                    <input type="text" class="form-control" name="sodienthoai">
+                    <input type="text" class="form-control" readonly="readonly" id="sodienthoai_view">
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="anh">Ảnh</label>
-                    <input type="file" class="form-control" id="anh" name="anh">
+                    <input type="file" class="form-control" id="anh_view">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-outline-success">Thêm</button>
             </div>
         </div>
     </div>

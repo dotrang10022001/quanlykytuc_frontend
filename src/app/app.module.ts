@@ -19,6 +19,8 @@ import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.compo
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SinhvienComponent } from './components/sinhvien/sinhvien.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PhananhComponent,
     DichvuComponent,
     LoaiphongComponent,
-    DangkyphongComponent
+    DangkyphongComponent,
+    SinhvienComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     Ng2SearchPipeModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

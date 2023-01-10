@@ -1,18 +1,18 @@
-<!--<div class="content-dangkyphong">
+<div class="content-dangkyphong" *ngIf="role.startsWith('student')">
     <p class="title">Đăng ký phòng</p>
 
     <div class="d-flex SearchAndAdd">
-        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
-            class='bx bx-search-alt-2'></i></span></div>
+        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off"
+                [(ngModel)]="searchText" /><span><i class='bx bx-search-alt-2'></i></span></div>
         <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
-            data-bs-target="#taoDangKyModal">
+            data-bs-target="#taoDangKySinhVienModal">
             <i class='bx bx-book-add me-1'></i>Tạo đăng ký
         </button>
     </div>
 
     <div class="data-dangky d-flex">
         <div class="decor">
-            <img src="../../../assets/images/decor_dangky.jpg" width="100%" height="20%"/>
+            <img src="../../../assets/images/decor_dangky.jpg" width="100%" height="150px" />
         </div>
         <div class="content">
             <table>
@@ -26,7 +26,8 @@
                     <th>Hành động</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dk of dsDangKy | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                    <tr
+                        *ngFor="let dk of dsDangKySinhVien | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
                         <td>{{dk.madangky}}</td>
                         <td>{{dk.maphong}}</td>
                         <td>{{dk.ky}}</td>
@@ -34,7 +35,7 @@
                         <td>{{dk.trangthai}}</td>
                         <td>{{dk.thoidiemphanhoi}}</td>
                         <td>
-                            <span><i class='bx bx-message-alt-x'></i></span>
+
                         </td>
                     </tr>
                 </tbody>
@@ -45,10 +46,10 @@
         </div>
     </div>
 </div>
--->
+
 <!-- Modal -->
-<!--
-<div class="modal fade" id="taoDangKyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="taoDangKySinhVienModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -72,62 +73,70 @@
         </div>
     </div>
 </div>
--->
 
 
-<!--
-<div class="content-dangkyphong">
+<div class="content-dangkyphong" *ngIf="role=='guest'">
     <p class="title">Đăng ký phòng</p>
 
     <div class="d-flex SearchAndAdd">
-        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off"
-                [(ngModel)]="searchText" /><span><i class='bx bx-search-alt-2'></i></span></div>
         <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
-            data-bs-target="#taoDangKyModal">
+            data-bs-target="#taoDangKyKhachModal">
             <i class='bx bx-book-add me-1'></i>Tạo đăng ký
         </button>
     </div>
 
-    <div class="data-dangky d-flex">
+    <div class="data-dangkykhach d-flex">
         <div class="decor">
-            <img src="../../../assets/images/decor_dangky.jpg" width="100%" height="20%" />
+            <img src="../../../assets/images/decor_register.jpg" width="100%" height="50%" />
         </div>
         <div class="content">
-            <table>
-                <thead>
-                    <th>Mã đăng ký</th>
-                    <th>Mã phòng</th>
-                    <th>Kỳ</th>
-                    <th>Thời điểm đăng ký</th>
-                    <th>Trạng thái</th>
-                    <th>Thời điểm phản hồi</th>
-                    <th>Hành động</th>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let dk of dsDangKy | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
-                        <td>{{dk.madangky}}</td>
-                        <td>{{dk.maphong}}</td>
-                        <td>{{dk.ky}}</td>
-                        <td>{{dk.thoidiemdangky}}</td>
-                        <td>{{dk.trangthai}}</td>
-                        <td>{{dk.thoidiemphanhoi}}</td>
-                        <td>
-                            <span><i class='bx bx-message-alt-x'></i></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="pagination">
-                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+
+            <h3 class="title-khach" style="font-size: 20px; font-weight: bold">Ký túc xá Bách Khoa Hà Nội</h3>
+            <div class="d-flex" style="width: 100%; height: 90%">
+                <div class="left">
+                    <div>
+                        <h6>1.Nhà xếp ở</h6>
+                        <p style="text-indent: 10px">{{thongbao.nhaXepO}}</p>
+                    </div>
+                    <div>
+                        <h6>2.Thời gian đăng ký và nộp lệ phí</h6>
+                        <p style="text-indent: 10px">{{thongbao.thoiGianDangKy}}</p>
+                    </div>
+                    <div>
+                        <h6>3.Thời gian ở</h6>
+                        <p style="text-indent: 10px">{{thongbao.thoiGianO}}</p>
+                    </div>
+                    <div>
+                        <h6>4.Đối tượng xếp ở</h6>
+                        <p style="text-indent: 10px">{{thongbao.doiTuongXepO}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <h6>5.Đối tượng ưu tiên</h6>
+                        <p style="text-indent: 10px">{{thongbao.doiTuongUuTien}}</p>
+                    </div>
+                    <div>
+                        <h6>6.Các khoản thu lệ phí</h6>
+                        <p style="text-indent: 10px">{{thongbao.khoanThuLePhi}}</p>
+                    </div>
+                    <div>
+                        <h6>7.Đăng ký trực tiếp(Nếu muốn)</h6>
+                        <p style="text-indent: 10px">{{thongbao.dangKyTrucTiep}}</p>
+                    </div>
+                    <div>
+                        <h6>8.Lưu ý</h6>
+                        <p style="text-indent: 10px">{{thongbao.luuY}}</p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
--->
+
 <!-- Modal -->
-<!--
-<div class="modal fade" id="taoDangKyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="taoDangKyKhachModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -138,18 +147,19 @@
                 <div class="row">
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Mã sinh viên</span>
-                        <input type="text" class="form-control" name="masinhvien">
+                        <input type="text" class="form-control" name="masinhvien" required>
                     </div>
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Họ tên</span>
-                        <input type="text" class="form-control" name="hoten">
+                        <input type="text" class="form-control" name="hoten" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Giới tính</span>
                         <div class="form-check form-check-inline mt-1 ms-4">
-                            <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="nam" />
+                            <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="nam"
+                                checked="checked" />
                             <label class="form-check-label" for="nam">Nam</label>
                         </div>
                         <div class="form-check form-check-inline mt-1">
@@ -159,35 +169,35 @@
                     </div>
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Ngày sinh</span>
-                        <input type="date" class="form-control" name="ngaysinh">
+                        <input type="date" class="form-control" name="ngaysinh" required>
                     </div>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Email</span>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" required>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nơi thường trú</span>
-                    <textarea class="form-control" name="noithuongtru"></textarea>
+                    <textarea class="form-control" name="noithuongtru" required></textarea>
                 </div>
                 <div class="row">
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Lớp</span>
-                        <input type="text" class="form-control" name="lop">
+                        <input type="text" class="form-control" name="lop" required>
                     </div>
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Khoa/Viện</span>
-                        <input type="text" class="form-control" name="khoa">
+                        <input type="text" class="form-control" name="khoa" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Mã phòng đăng ký</span>
-                        <input type="text" class="form-control" name="maphong">
+                        <input type="text" class="form-control" name="maphong" required>
                     </div>
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">Kỳ</span>
-                        <input type="number" class="form-control" name="ky">
+                        <input type="number" class="form-control" name="ky" required>
                     </div>
                 </div>
             </div>
@@ -198,17 +208,17 @@
         </div>
     </div>
 </div>
--->
 
 
 
 
-<div class="content-dangkyphong">
+
+<div class="content-dangkyphong" *ngIf="role.startsWith('manager') || role.startsWith('admin')">
     <p class="title">Đăng ký phòng</p>
 
     <div class="d-flex SearchAndAdd">
-        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
-            class='bx bx-search-alt-2'></i></span></div>
+        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off"
+                [(ngModel)]="searchText" /><span><i class='bx bx-search-alt-2'></i></span></div>
     </div>
 
     <div class="data-dangky d-flex">
@@ -224,7 +234,8 @@
                     <th>Hành động</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dk of dsDangKy | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                    <tr
+                        *ngFor="let dk of dsDangKyCanBo | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
                         <td>{{dk.madangky}}</td>
                         <td>{{dk.maphong}}</td>
                         <td>{{dk.ky}}</td>

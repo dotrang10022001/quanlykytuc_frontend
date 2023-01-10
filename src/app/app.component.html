@@ -1,5 +1,5 @@
 <div>
-    <nav>
+    <nav *ngIf="role != 'guest'">
         <ul>
             <li>
                 <a routerLink="trangchu" class="logo">
@@ -32,21 +32,27 @@
                 </a>
             </li>
             <li>
-                <a routerLink="dichvu">
-                    <i class='bx bx-shower'></i>
-                    <span class="nav-item">Danh sách dịch vụ</span>
+                <a routerLink="sinhvien">
+                    <i class='bx bx-landscape'></i>
+                    <span class="nav-item">Danh sách sinh viên</span>
                 </a>
             </li>
             <li>
                 <a routerLink="loaiphong">
                     <i class='bx bx-leaf'></i>
-                    <span class="nav-item">Danh sách loại phòng</span>
+                    <span class="nav-item">Thông tin loại phòng</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="dichvu">
+                    <i class='bx bx-shower'></i>
+                    <span class="nav-item">Thông tin dịch vụ</span>
                 </a>
             </li>
             <li>
                 <a routerLink="phananh">
                     <i class='bx bx-paper-plane'></i>
-                    <span class="nav-item">Phản ánh</span>
+                    <span class="nav-item">Hỗ trợ phản ánh</span>
                 </a>
             </li>
             <li>
@@ -55,7 +61,7 @@
                     <span class="nav-item">Thông tin cá nhân</span>
                 </a>
             </li>
-            <li>
+            <li *ngIf="role.startsWith('admin')">
                 <a routerLink="admin">
                     <i class='bx bx-cog'></i>
                     <span class="nav-item">Quản trị</span>
@@ -65,7 +71,48 @@
             <li>
                 <a routerLink="login" class="logout" >
                     <i class='bx bx-log-in'></i>
-                    <span class="nav-item">Đăng xuất</span>
+                    <span class="nav-item" (click)="onLogout()">Đăng xuất</span>
+                </a>
+            </li>
+    
+        </ul>
+    </nav>
+    <nav *ngIf="role == 'guest'">
+        <ul>
+            <li>
+                <a routerLink="trangchu" class="logo">
+                    <img src="../assets/images/logo.jpg" alt="">
+                    <span class="nav-item">Quản lý ký túc xá</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="trangchu">
+                    <i class='bx bx-home'></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="dangkyphong">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="nav-item">Đăng ký phòng</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="loaiphong">
+                    <i class='bx bx-leaf'></i>
+                    <span class="nav-item">Thông tin loại phòng</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="dichvu">
+                    <i class='bx bx-shower'></i>
+                    <span class="nav-item">Thông tin dịch vụ</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="login" >
+                    <i class='bx bx-log-in'></i>
+                    <span class="nav-item">Đăng nhập</span>
                 </a>
             </li>
     

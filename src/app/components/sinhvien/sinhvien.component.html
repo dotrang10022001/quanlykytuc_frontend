@@ -1,0 +1,134 @@
+<div class="content-sinhvien">
+    <p class="title">Danh sách sinh viên</p>
+
+    <div class="d-flex SearchAndAdd">
+        <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText" /><span><i
+                class='bx bx-search-alt-2'></i></span>
+        <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal" data-bs-target="#themSvModal">
+            <i class='bx bx-book-add me-1'></i>Thêm sinh viên
+        </button>
+    </div>
+
+    <div class="data-sinhvien">
+        <table *ngIf="dsSinhVien && dsSinhVien.length > 0">
+            <thead>
+                <tr>
+                    <th>Mã sinh viên</th>
+                    <th>Ảnh</th>
+                    <th>Họ tên</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let sv of dsSinhVien | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                    <td>{{sv.masinhvien}}</td>
+                    <td><img src="../../../assets/images/baove.jpg"></td>
+                    <td>{{sv.hoten}}</td>
+                    <td>{{sv.gioitinh}}</td>
+                    <td>{{sv.ngaysinh | date: 'dd-MM-yyyy'}}</td>
+                    <td>{{sv.sodienthoai}}</td>
+                    <td>{{sv.email}}</td>
+                    <td>
+                        <span class="me-1" (click)="xemSinhVien(sv.masinhvien)"><i class='bx bxs-analyse'></i></span>
+                        <span class="me-1"><i class='bx bxs-edit-alt'></i></span>
+                        <span><i class='bx bxs-trash'></i></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!dsSinhVien || dsSinhVien.length <= 0" class="text-center">Không có sinh viên nào</p>
+    </div>
+</div>
+<div class="pagination" *ngIf="dsSinhVien && dsSinhVien.length > 0">
+    <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+</div>
+<div class="modal fade" id="themSvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm sinh viên</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Mã sinh viên</span>
+                        <input type="text" class="form-control" name="masinhvien" required>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Họ tên</span>
+                        <input type="text" class="form-control" name="hoten" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Giới tính</span>
+                        <div class="form-check form-check-inline mt-1 ms-4">
+                            <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="nam"
+                                checked="checked" />
+                            <label class="form-check-label" for="nam">Nam</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-1">
+                            <input class="form-check-input" type="radio" name="gioitinh" id="nu" value="nu" />
+                            <label class="form-check-label" for="nu">Nữ</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Ngày sinh</span>
+                        <input type="date" class="form-control" name="ngaysinh" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Số điện thoại</span>
+                        <input type="email" class="form-control" name="sodienthoai" required>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Email</span>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Họ tên cha</span>
+                        <input type="text" class="form-control" name="hotencha" required>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Họ tên mẹ</span>
+                        <input type="text" class="form-control" name="hotenme" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Nơi thường trú</span>
+                        <textarea class="form-control" name="noithuongtru" required></textarea>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Lớp</span>
+                        <input type="text" class="form-control" name="lop" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Khoa</span>
+                        <input type="text" class="form-control" name="khoa" required>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Viện</span>
+                        <input type="text" class="form-control" name="vien" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-outline-success">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>

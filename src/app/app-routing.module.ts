@@ -10,9 +10,10 @@ import { PhananhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
+import { SinhvienComponent } from './components/sinhvien/sinhvien.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'trangchu', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'trangchu', component: TrangchuComponent},
   {path: 'canbo', component: CanboComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'phananh', component: PhananhComponent},
   {path: 'dichvu', component: DichvuComponent},
   {path: 'loaiphong', component: LoaiphongComponent},
-  {path: 'dangkyphong', component: DangkyphongComponent}
+  {path: 'dangkyphong', component: DangkyphongComponent},
+  {path: 'sinhvien', component: SinhvienComponent}
 ];
 
 @NgModule({
