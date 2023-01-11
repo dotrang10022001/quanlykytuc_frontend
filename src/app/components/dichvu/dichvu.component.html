@@ -6,7 +6,7 @@
         <input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
                 class='bx bx-search-alt-2'></i></span>
         <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
-            data-bs-target="#themDichVuModal">
+            data-bs-target="#themDichVuModal" *ngIf="role.startsWith('manager') || role.startsWith('admin')">
             <i class='bx bx-book-add me-1'></i>Thêm dịch vụ
         </button>
     </div>
@@ -19,7 +19,7 @@
                     <div class="card-description">{{dv.mota}}</div>
                     <div class="list-content d-flex">
                         <div class="dongia">Đơn giá: <b>{{dv.dongia}} VNĐ/{{dv.donvitinh}}</b></div>
-                        <div class="list-icon">
+                        <div class="list-icon" *ngIf="role.startsWith('manager') || role.startsWith('admin')">
                             <span><i class='bx bxs-edit-alt me-1'></i></span>
                             <span><i class='bx bxs-trash' ></i></span>
                         </div>

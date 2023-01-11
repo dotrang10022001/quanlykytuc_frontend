@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LoaiphongComponent {
 
+  role: string="guest";
   dsLoaiPhong: any=[
     {maloaiphong: 'cobannuB3', tenloaiphong: 'Cơ bản-Nữ', mota: 'Phòng có giường, tủ cá nhân, nhà vệ sinh khép kín, tiền phòng đã bao gồm tiền nước',
   succhua: 8, doituong: 'Nữ', giaphong: 1400000, anh: 'lp1.jpg', toa: 'B3'},
@@ -27,6 +28,10 @@ export class LoaiphongComponent {
   total: any;
   constructor (){
     this.total = this.dsLoaiPhong.length;
+    if (localStorage.getItem('role')) {
+      let data = localStorage.getItem('role');
+      if (data != null) this.role = data.toString();
+    }
   }
 
 }

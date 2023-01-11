@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dichvu.component.css']
 })
 export class DichvuComponent {
+  role: string="guest";
 
   //dịch vụ: tên dịch vụ, đơn vị tính, đơn giá, mô tả, ảnh, ghi chú
   
@@ -22,6 +23,10 @@ export class DichvuComponent {
   total: any;
   constructor (){
     this.total = this.dsDichVu.length;
+    if (localStorage.getItem('role')) {
+      let data = localStorage.getItem('role');
+      if (data != null) this.role = data.toString();
+    }
   }
 
 }
