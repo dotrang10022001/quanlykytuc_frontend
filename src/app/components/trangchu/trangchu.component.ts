@@ -8,7 +8,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
-//   styleUrls: ['./trangchu.component.css'],
+  styleUrls: ['./trangchu.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class TrangchuComponent {
