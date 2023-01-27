@@ -1,26 +1,29 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Canbo } from 'src/app/models/canbo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CanboService {
-  private baseUrl = 'https://localhost:7200/api/services/app';
 
-  constructor(private http: HttpClient) { }
+  baseUrl: string="http://65.108.79.164:7200/api/services/app/Canbo/";
 
-  getDanhSachCB(): Observable<Canbo[]>{
-    return this.http.get<Canbo[]>(this.baseUrl+"/CanBo/GetCanBo");
+  constructor(private httpClient: HttpClient) { }
+
+  themHoacSuaCanBo(cb: Canbo){
+    return this.httpClient.post<any>(this.baseUrl + "CreateOrUpdateCanbo", cb);
   }
 
-  xemCanBo(id: number){
-    return this.http.get<Canbo>(this.baseUrl+"/CanBo/GetCanBo?Id="+id);
+  getDanhSachCanBo(){
+    return this.httpClient.get<any>(this.baseUrl + "GetCanBo");
+  }
+  xoaCanBo(id: number){
+    return this.httpClient.delete<any>(this.baseUrl + "DeleteCanBo?id=" + id);
   }
 
-  themCanBo(canbo: Canbo){
-    return this.http.post(this.baseUrl+"/CanBo/CreateOrUpdateCanBo", canbo);
+  getCanBoById(id: number){
+    return this.httpClient.get<any>(this.baseUrl + "GetCanBo?Id=" + id);
   }
 
 }

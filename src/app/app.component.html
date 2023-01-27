@@ -31,7 +31,7 @@
                     <span class="nav-item">Danh sách cán bộ</span>
                 </a>
             </li>
-            <li>
+            <li *ngIf="role.startsWith('admin') || role.startsWith('manager')">
                 <a routerLink="sinhvien">
                     <i class='bx bx-landscape'></i>
                     <span class="nav-item">Danh sách sinh viên</span>
@@ -69,9 +69,9 @@
             </li>
 
             <li>
-                <a routerLink="login" class="logout" >
+                <a routerLink="login" class="logout" (click)="onLogout()">
                     <i class='bx bx-log-in'></i>
-                    <span class="nav-item" (click)="onLogout()">Đăng xuất</span>
+                    <span class="nav-item">Đăng xuất</span>
                 </a>
             </li>
     

@@ -1,79 +1,52 @@
 .content-sinhvien {
-    padding: 0 10px;
+    padding: 10px 30px;
     position: relative;
 }
-
 .title {
     font-family: 'Merienda', cursive;
-    margin-top: 10px;
     font-size: 20px;
-    margin-left: 30px;
 }
-
-.SearchAndAdd{
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+.btnThem{
+    position: absolute;
+    right: 30px;
+}
+table {
+  width: 100%;
+}
+.content-data{
+    margin-top: 40px;
+}
+.search{
     position: relative;
 }
-#search{
-    height: 40px;
+.search input{
+    height: 30px;
+    font-size: 14px;
     background-color: #dfe9f5;
     border: none;
-    border-bottom: solid 2px grey;
-    width: 250px;
+    border-bottom: grey solid 1px;
+    margin-left: 30px;
 }
-.SearchAndAdd span i{
+.search i{
+    font-size: 20px;
     position: absolute;
-    bottom: 0;
-    font-size: 30px;
-    color: grey;
-}
-#search:focus{
-    outline: none;
-    border-bottom: solid 2px black;
-}
-#btnThem{
-    position: absolute;
-    right: 0;
-}
+    bottom: 5px;
 
-.data-sinhvien {
-    margin-top: 10px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
 }
-th, td{
-    text-align: center;
+.search input:focus{
+    outline: none;
+    border-bottom: 1px solid grey;
 }
-table{
-    width: 100%;
-    margin-top: 20px;
-    background-color: white;
-    box-shadow: 8px 8px 4px rgb(173, 173, 173);
+.mat-mdc-table .mdc-data-table__header-row {
+    background-color: #009879;
+    height: 50px;
 }
-thead{
-    background-color: grey;
-    height: 40px;
+.mdc-data-table__header-cell{
+    color: white;
 }
-td{
-    height: 80px;
-    border-bottom: solid 1px grey;
+.mat-mdc-table .mdc-data-table__row:nth-of-type(even){
+    background-color: #f3f3f3;
 }
-td img{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
-span{
-    cursor: pointer;
-}
-.pagination{
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    right: 0;
+.mat-mdc-table{
+    border-radius: 4px;
 }

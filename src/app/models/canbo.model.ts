@@ -9,4 +9,5 @@ export interface Canbo{
     ngaySinh: string;
     creationTime: string;
     id: number;
+    accountId: number;
 }

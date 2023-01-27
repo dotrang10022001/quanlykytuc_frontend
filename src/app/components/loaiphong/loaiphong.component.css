@@ -1,118 +1,100 @@
 .content-loaiphong {
     padding: 0 30px;
+    position: relative;
 }
 
 .title {
     font-family: 'Merienda', cursive;
     margin-top: 10px;
     font-size: 20px;
-    margin-left: 30px;
 }
-.main-content{
-    margin-top: 20px;
+.content-data{
+    width: 100%;
     height: 500px;
+    margin-top: 20px;
+    margin-left: 5px;
 }
-.SearchAndAdd{
-    width: 95%;
-    margin-left: auto;
+.example-card {
+    width: 330px;
+    height: 430px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.322);
+    position: relative;
+    margin-left: auto; 
     margin-right: auto;
-    position: relative;
-}
-#search{
-    height: 40px;
-    background-color: #dfe9f5;
-    border: none;
-    border-bottom: solid 2px grey;
-    width: 250px;
-}
-.SearchAndAdd span i{
-    position: absolute;
-    bottom: 0;
-    font-size: 30px;
-    color: grey;
-}
-#search:focus{
-    outline: none;
-    border-bottom: solid 2px black;
-}
-#btnThem{
-    position: absolute;
-    right: 0;
-}
-.card{
+    cursor: pointer;
+  }
+img{
+    width: 300px;
     height: 200px;
-    padding: 10px;
-    background-color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 8px;
 }
-.card-body{
+.card-header{
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    padding:0;
+    background-color: #fff;
 }
-.image{
-    width: 30%;
-    height: 100%;
-    background-color: red;
+mat-card-title{
+    border: grey solid 2px;
+    padding: 0 2px;
+    margin-bottom: 4px;
 }
-.content{
-    width: 70%;
-    height: 100%;
-    padding: 0 10px;
+mat-card-content{
+    margin-top: 10px;
 }
-.card-head{
-    width: 100%;
-    height: 20%;
-    font-size: 20px;
-    font-family: 'Merienda', cursive;
-    font-weight: bold;
-    position: relative;
+mat-card-content p{
+
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-.card-description{
-    width: 100%;
-    height: 40%;
-}
-.list-content{
-    width: 100%;
-    height: 20%;
-    position: relative;
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    font-size: 13px;
+    background-color: #fff;
+    padding-top: 20px;
 }
 .list-icon{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-.dongia{
-    font-size: 14px;
-    position: absolute;
-    bottom: 0;
-}
-.card-capacity-object{
-    width: 100%;
-    height: 20%;
-    font-size: 14px;
-    position: relative;
-}
-.doituong{
-    position: absolute;
-    right: 0;
-}
-.pagination{
     position: absolute;
     bottom: 10px;
     display: flex;
     justify-content: center;
     left: 0;
     right: 0;
+    font-size: 18px;
 }
-.toa{
+.search{
+    position: relative;
+}
+.search input{
+    height: 30px;
+    font-size: 14px;
+    background-color: #dfe9f5;
+    border: none;
+    border-bottom: grey solid 1px;
+    margin-left: 30px;
+}
+.search i{
+    font-size: 20px;
     position: absolute;
-    right: 0;
-    border: 2px solid grey;
-    width: 50px;
-    text-align: center;
+    bottom: 5px;
+
 }
-strong{
-    margin-left: 5px;
-    font-size: 12px;
-    font-weight: normal;
+.search input:focus{
+    outline: none;
+    border-bottom: 1px solid grey;
+}
+.btnThem{
+    position: absolute;
+    right: 30px;
 }

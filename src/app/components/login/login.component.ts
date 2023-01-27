@@ -28,14 +28,15 @@ export class LoginComponent {
       });
     } else {
       this.loginService.onLogin(this.loginObj).subscribe((res: any) => {
-        if (res.success) {
+        if (res.success && res.data.isActive) {
           Swal.fire({
             icon: 'success',
             title: 'Đăng nhập thành công!',
           }).then((result) => {
             localStorage.setItem('role', res.data.role);
+            localStorage.setItem('roleId', res.data.roleId);
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('username', res.data.userName);
+            localStorage.setItem('userId', res.data.userId);
             this.router.navigateByUrl('/trangchu')
               .then(() => {
                 window.location.reload();

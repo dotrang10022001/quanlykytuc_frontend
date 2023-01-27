@@ -6,7 +6,6 @@
     border: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 body{
     background: #dfe9f5;
@@ -47,7 +46,7 @@ a{
     font-size: 14px;
     display: table;
     width: 300px;
-    padding: 7px;
+    padding: 6px;
 }
 i{
     position: relative;

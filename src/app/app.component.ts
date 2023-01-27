@@ -20,7 +20,8 @@ export class AppComponent {
   onLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    localStorage.removeItem('username');
+    localStorage.removeItem('roleId');
+    localStorage.removeItem('userId');
     this.router.navigateByUrl('/login')
       .then(() => {
         window.location.reload();
