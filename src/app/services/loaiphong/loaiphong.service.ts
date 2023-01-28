@@ -7,7 +7,7 @@ import { LoaiPhong } from 'src/app/models/loaiphong.model';
 })
 export class LoaiPhongService {
 
-  baseUrl: string="http://65.108.79.164:7200/api/services/app/LoaiPhong/";
+  baseUrl: string="https://65.108.79.164:7201/api/services/app/LoaiPhong/";
 
   constructor(private httpClient: HttpClient) { }
 

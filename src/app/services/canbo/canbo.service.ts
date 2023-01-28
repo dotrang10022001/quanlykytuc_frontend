@@ -7,7 +7,7 @@ import { Canbo } from 'src/app/models/canbo.model';
 })
 export class CanboService {
 
-  baseUrl: string="http://65.108.79.164:7200/api/services/app/Canbo/";
+  baseUrl: string="https://65.108.79.164:7201/api/services/app/Canbo/";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -7,7 +7,7 @@ import { DichVu } from 'src/app/models/dichvu.model';
 })
 export class DichvuService {
 
-  baseUrl: string="http://65.108.79.164:7200/api/services/app/LoaiDichVu/";
+  baseUrl: string="https://65.108.79.164:7201/api/services/app/LoaiDichVu/";
 
   constructor(private httpClient: HttpClient) { }
 
