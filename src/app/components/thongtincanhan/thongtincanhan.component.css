@@ -1,13 +1,12 @@
-.main-content{
-    padding: 10px;
-}
 .title{
-    font-family: 'Merienda', cursive;
     font-size: 20px;
     margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-family: 'Merienda', cursive;
 }
 .card-profile{
-    height: 500px;
+    height: 510px;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -19,7 +18,7 @@
     width: 33%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    padding: 30px;
+    padding: 20px;
 }
 .profile-image{
     height: 100%;
@@ -40,7 +39,7 @@
     width: 33%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 30px;
+    padding: 20px;
 }
 .profile-image img{
     width: 200px;
@@ -49,6 +48,9 @@
 }
 .name{
     text-align: center;
+    font-weight: bold; 
+    font-size: 20px;
+    font-family: 'Merienda', cursive;
 }
 .basic{
     background-color: white;
@@ -59,8 +61,9 @@
     font-size: 15px;
 }
 h6{
+    font-size: 18px;
+    font-weight: normal;
     font-family: 'Merienda', cursive;
-    font-weight: bold;
 }
 span{
     cursor: pointer;

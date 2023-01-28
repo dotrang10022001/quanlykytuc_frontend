@@ -1,13 +1,16 @@
 .content-phananh {
-    padding: 0 10px;
+    padding: 10px 30px;
     height: 100vh;
 }
 
-.title {
+.title{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.title h3{
     font-family: 'Merienda', cursive;
-    margin-top: 10px;
     font-size: 20px;
-    margin-left: 30px;
 }
 
 .SearchAndAdd{
@@ -25,7 +28,7 @@
 }
 .search-wrap{
     position: absolute;
-    right: 70px;
+    right: 0px;
 }
 .SearchAndAdd span i{
     position: absolute;
@@ -37,15 +40,34 @@
     outline: none;
     border-bottom: solid 2px black;
 }
-#btnThem{
+.btnThem mat-icon{
+    margin-right: 8px;
+}
+.btnThem{
     position: absolute;
-    left: 0;
+    left: 30px;
+    background-color: #13a07d;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    border-radius: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 14px;
+    font-family: 'Merienda', cursive;
+    font-weight: bold;
+}
+.btnThem:hover{
+    background-color: #2fbe8e;
 }
 
 .data-phananh {
     margin-top: 60px;
-    height: 500px;
-    width: 95%;
+    height: 530px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -61,28 +83,45 @@ span{
     cursor: pointer;
 }
 table{
-    width: 90%;
+    width: calc(100% - 20px);
+    position: absolute;
     background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    cursor: pointer;
 }
 th, td{
     text-align: center;
 }
 tr:nth-child(even){
-    background-color: rgb(207, 202, 202);
+    background-color: #f3f3f3;
+}
+tr{
+    height: 35px;
+    border-bottom: solid 1px #ccc9c9;
+}
+tr:last-of-type{
+    border-bottom: solid 4px #13a07d;
 }
 thead{
-    border-bottom: solid 2px black;
-    background-color: #dfe9f5;
+    background-color: #13a07d;
+    height: 40px;
+    font-family: 'Merienda', cursive;
+    color: white;
+}
+thead tr{
+    border-bottom: #13a07d solid 1px;
+}
+tr:hover{
+    background-color: #d3d0d0;
+}
+thead tr:hover{
+    background-color: #13a07d;
 }
 .content{
     position: relative;
 }
 .pagination{
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     left: 0;

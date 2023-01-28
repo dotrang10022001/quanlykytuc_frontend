@@ -1,0 +1,22 @@
+<h3>{{actionBtn}} phản ánh</h3>
+<div mat-dialog-content>
+    <form [formGroup]="paForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã tòa </mat-label>
+            <input matInput formControlName="matoa" placeholder="Mã tòa">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tiêu đề </mat-label>
+            <input matInput formControlName="tieude" placeholder="Tiêu đề">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nội dung </mat-label>
+            <textarea matInput formControlName="noidung"></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaPhanAnh()">{{actionBtn}}</button>
+</div>

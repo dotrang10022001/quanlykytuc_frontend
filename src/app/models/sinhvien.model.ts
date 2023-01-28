@@ -1,15 +1,17 @@
-export interface Sinhvien{
-    masinhvien: string;
-    hoten: string;
-    sodienthoai: string;
-    gioitinh: string;
-    ngaysinh: Date;
+export interface SinhVien{
+    id: number;
+    maSinhVien: string;
+    hoTen: string;
+    gioiTinh: string;
+    ngaySinh: string;
     email: string;
+    soDienthoai: string;
     khoa: string;
     vien: string;
     lop: string;
-    hotencha: string;
-    hotenme: string;
-    noithuongtru: string;
-    anh: string;
+    hoTenCha: string;
+    hoTenMe: string;
+    noiThuongTru: string;
+    creationTime: string;
+    accountId: number;
 }

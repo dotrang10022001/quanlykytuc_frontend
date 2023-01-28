@@ -1,73 +1,13 @@
-<!--<div class="content-phananh">
-    <p class="title">Phản ánh</p>
-
-    <div class="d-flex SearchAndAdd">
-        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
-            class='bx bx-search-alt-2'></i></span></div>
-        <button type="button" class="btn btn-primary" id="btnThem" data-bs-toggle="modal"
-            data-bs-target="#taoPhanAnhModal">
-            <i class='bx bx-book-add me-1'></i>Tạo phản ánh
-        </button>
-    </div>
-
-    <div class="data-phananh d-flex">
-        <div class="decor d-flex align-items-center">
-            <img src="../../../assets/images/phananh_decor.jpg" width="100%" height="200px"/>
-        </div>
-        <div class="content">
-            <table>
-                <thead>
-                    <th>Nội dung phản ánh</th>
-                    <th>Thời điểm phản ánh</th>
-                    <th>Nội dung phản hồi</th>
-                    <th>Thời điểm phản hồi</th>
-                    <th>Hành động</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let phananh of dsPhanAnh | filter: searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
-                        <td>{{phananh.noidungphananh}}</td>
-                        <td>{{phananh.thoidiemphananh}}</td>
-                        <td>{{phananh.noidungphanhoi}}</td>
-                        <td>{{phananh.thoidiemphanhoi}}</td>
-                        <td *ngIf="phananh.noidungphanhoi == ''"><span><i class='bx bxs-trash'></i></span></td>
-                        <td *ngIf="phananh.noidungphanhoi != ''"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="pagination">
-                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
-            </div>
-        </div>
-    </div>
-</div>
--->
-<!-- Modal -->
-<div class="modal fade" id="taoPhanAnhModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tạo phản ánh</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Nội dung phản ánh</span>
-                    <textarea class="form-control" name="noidungphananh"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-outline-success">Tạo</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Quản lý-->
-
 <div class="content-phananh">
-    <p class="title">Phản ánh</p>
-
+    <div class="title">
+        <h3>
+          Phản ánh
+        </h3>
+      </div>
+    <button class="btnThem" (click)="openDialog()" *ngIf="role.startsWith('student')">
+        <mat-icon>perm_contact_calendar</mat-icon>
+        Tạo phản ánh
+    </button>
     <div class="d-flex SearchAndAdd">
         <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
             class='bx bx-search-alt-2'></i></span></div>
@@ -77,23 +17,35 @@
         <div class="content" style="width: 100%;">
             <table style="width: 100%">
                 <thead>
-                    <th>Mã sinh viên</th>
-                    <th>Nội dung phản ánh</th>
-                    <th>Thời điểm phản ánh</th>
-                    <th>Nội dung phản hồi</th>
-                    <th>Thời điểm phản hồi</th>
-                    <th>Hành động</th>
+                    <th *ngIf="role.startsWith('student')">Mã sinh viên</th>
+                    <th>Tòa</th>
+                    <th>Tiêu đề</th>
+                    <th>Nội dung</th>
+                    <th>Lần cập nhật cuối</th>
+                    <th>Trạng thái</th>
+                    <th *ngIf="!role.startsWith('admin')">Hành động</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let phananh of dsPhanAnhQL | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
-                        <td>{{phananh.masinhvien}}</td>
+                    <tr *ngFor="let phananh of dsPhanAnh | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                        <td *ngIf="role.startsWith('student')">{{phananh.masinhvien}}</td>
+                        <td>{{phananh.matoa}}</td>
+                        <td>{{phananh.tieudephananh}}</td>
                         <td>{{phananh.noidungphananh}}</td>
-                        <td>{{phananh.thoidiemphananh}}</td>
-                        <td>{{phananh.noidungphanhoi}}</td>
-                        <td>{{phananh.thoidiemphanhoi}}</td>
-                        <td>
-                            <span><i class='bx bxs-edit-alt me-1' ></i></span>
-                            <span><i class='bx bxs-trash'></i></span>
+                        <td>{{phananh.thoigiantao | date: 'medium'}}</td>
+                        <td [ngStyle]="phananh.trangthai == 'Chưa xử lý' ? {'color': 'red'} : {'color': 'green'}" class="fw-bold">{{phananh.trangthai}}</td>
+                        <td *ngIf="!role.startsWith('admin')">
+                            <button mat-icon-button color="primary" (click)="suaPhanAnh(phananh.id)" *ngIf="role.startsWith('student') && phananh.isEditSV == 'true'">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" (click)="capNhatTrangThai(phananh.id)" *ngIf="role.startsWith('manager') && (phananh.isCheckCB == 'true')">
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" (click)="capNhatTrangThai(phananh.id)" *ngIf="role.startsWith('manager') && (phananh.isUndoCB == 'true')">
+                                <mat-icon>undo</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="xoaPhanAnh(phananh.id)" *ngIf="(role.startsWith('student') && phananh.isEditSV == 'true') || (role.startsWith('manager') && ((phananh.isCheckCB == 'true') || (phananh.isUndoCB == 'true')))">
+                                <mat-icon>delete</mat-icon>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

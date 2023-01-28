@@ -12,15 +12,34 @@ import { HttpClientModule } from '@angular/common/http';
 import { PhongComponent } from './components/phong/phong.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ThongtincanhanComponent } from './components/thongtincanhan/thongtincanhan.component';
-import { PhananhComponent } from './components/phananh/phananh.component';
+import { PhanAnhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SinhvienComponent } from './components/sinhvien/sinhvien.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { SinhvienDialogComponent } from './dialogs/sinhvien-dialog/sinhvien-dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatCardModule} from '@angular/material/card';
+import { CanboDialogComponent } from './dialogs/canbo-dialog/canbo-dialog.component';
+import { DichvuDialogComponent } from './dialogs/dichvu-dialog/dichvu-dialog.component';
+import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyphong-dialog.component';
+import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
+import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +50,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PhongComponent,
     AdminComponent,
     ThongtincanhanComponent,
-    PhananhComponent,
+    PhanAnhComponent,
     DichvuComponent,
     LoaiphongComponent,
     DangkyphongComponent,
-    SinhvienComponent
+    SinhvienComponent,
+    SinhvienDialogComponent,
+    CanboDialogComponent,
+    DichvuDialogComponent,
+    DangkyphongDialogComponent,
+    LoaiPhongDialogComponent,
+    PhanAnhDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +71,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Ng2SearchPipeModule,
     FormsModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

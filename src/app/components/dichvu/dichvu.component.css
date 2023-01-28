@@ -1,94 +1,81 @@
 .content-dichvu {
-    padding: 0 30px;
+    padding: 10px 30px;
+    position: relative;
+    height: 100vh;
 }
 
 .title {
     font-family: 'Merienda', cursive;
-    margin-top: 10px;
+    
     font-size: 20px;
-    margin-left: 30px;
 }
-.main-content{
+.content-data{
+    width: 100%;
     margin-top: 20px;
-    height: 500px;
+    margin-left: 5px;
 }
-.SearchAndAdd{
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+.search{
     position: relative;
 }
-#search{
-    height: 40px;
+.search input{
+    height: 30px;
+    font-size: 14px;
     background-color: #dfe9f5;
     border: none;
-    border-bottom: solid 2px grey;
-    width: 250px;
+    border-bottom: grey solid 1px;
+    margin-left: 30px;
 }
-.SearchAndAdd span i{
-    position: absolute;
-    bottom: 0;
-    font-size: 30px;
-    color: grey;
-}
-#search:focus{
-    outline: none;
-    border-bottom: solid 2px black;
-}
-#btnThem{
-    position: absolute;
-    right: 0;
-}
-.card{
-    height: 200px;
-    padding: 10px;
-    background-color: white;
-    cursor: pointer;
-}
-.card-body{
-    width: 100%;
-    height: 100%;
-    padding:0;
-}
-.image{
-    width: 30%;
-    height: 100%;
-    background-color: red;
-}
-.content{
-    width: 70%;
-    height: 100%;
-    padding: 0 10px;
-}
-.card-head{
-    width: 100%;
-    height: 20%;
+.search i{
     font-size: 20px;
+    position: absolute;
+    bottom: 5px;
+
 }
-.card-description{
-    width: 100%;
-    height: 60%;
+.search input:focus{
+    outline: none;
+    border-bottom: 1px solid grey;
 }
-.list-content{
-    width: 100%;
-    height: 20%;
+.btnThem{
+    position: absolute;
+    right: 30px;
+}
+.dichvu-card{
+    margin-top: 10px;
+    padding: 10px;
+    height: 230px;
+}
+.example-card {
     position: relative;
-}
+    width: 100%;
+    height: 210px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
 .list-icon{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-.dongia{
-    font-size: 14px;
-    position: absolute;
-    bottom: 0;
-}
-.pagination{
     position: absolute;
     bottom: 10px;
     display: flex;
     justify-content: center;
+    right: 10px;
+    font-size: 18px;
+}
+mat-card-content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+mat-card-content p{
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.pagination{
+    position: absolute;
+    bottom: 10px;
     left: 0;
     right: 0;
+    display: flex;
+    justify-content: center;
 }

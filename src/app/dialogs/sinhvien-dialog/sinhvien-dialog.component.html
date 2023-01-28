@@ -1,0 +1,65 @@
+<h3>{{actionBtn}} sinh viên</h3>
+<div mat-dialog-content>
+    <form [formGroup]="svForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã sinh viên </mat-label>
+            <input matInput formControlName="masinhvien" placeholder="Mã sinh viên" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Họ tên </mat-label>
+            <input matInput formControlName="hoten" placeholder="Họ tên" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <label id="gioi-tinh-label">Giới tính </label>
+        <mat-radio-group aria-labelledby="gioi-tinh-label" formControlName="gioitinh">
+            <mat-radio-button value="Nam" [disabled]="isReadonlyView">
+                Nam
+            </mat-radio-button>
+            <mat-radio-button value="Nữ" [disabled]="isReadonlyView">
+                Nữ
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <mat-label>Ngày sinh </mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="ngaysinh" [readonly]="isReadonlyView">
+            <mat-datepicker-toggle matIconSuffix [for]="picker" [disabled]="isReadonlyView"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Số điện thoại </mat-label>
+            <input matInput placeholder="Số điện thoại" formControlName="sodienthoai" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email </mat-label>
+            <input matInput placeholder="Email" type="email" formControlName="email" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Viện </mat-label>
+            <input matInput placeholder="Viện" formControlName="vien" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Khoa </mat-label>
+            <input matInput placeholder="Khoa" formControlName="khoa" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Lớp </mat-label>
+            <input matInput placeholder="Lớp" formControlName="lop" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Họ tên cha </mat-label>
+            <input matInput placeholder="Họ tên cha" formControlName="hotencha" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Họ tên mẹ </mat-label>
+            <input matInput placeholder="Họ tên mẹ" formControlName="hotenme" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nơi thường trú </mat-label>
+            <textarea matInput formControlName="noithuongtru" [readonly]="isReadonlyView"></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaSinhVien()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>

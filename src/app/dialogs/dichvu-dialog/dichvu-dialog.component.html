@@ -1,0 +1,36 @@
+<h3>{{actionBtn}} loại dịch vụ</h3>
+<div mat-dialog-content>
+    <form [formGroup]="dvForm">
+        <label id="anh-label">Ảnh </label>
+        <br/>
+        <img [src]="imageUrlPreview" id="imagePreview"/>
+        <br/><br/>
+        <input *ngIf="role.startsWith('admin')" type="file" class="form-control" formControlName="anh" accept=".jpg, .png" (change)="handleFileInput($event)">
+        <br/>
+        <mat-form-field appearance="outline">
+            <mat-label>Mã loại dịch vụ </mat-label>
+            <input matInput formControlName="maloaidichvu" placeholder="Mã loại dịch vụ" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tên loại dịch vụ </mat-label>
+            <input matInput formControlName="tenloaidichvu" placeholder="Tên loại dịch vụ" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Mô tả </mat-label>
+            <textarea matInput formControlName="mota" [readonly]="isReadonlyView"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Đơn vị tính </mat-label>
+            <input matInput placeholder="Đơn vị tính" type="text" formControlName="donvitinh" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Đơn giá </mat-label>
+            <input matInput placeholder="Đơn giá" formControlName="dongia" type="number" [readonly]="isReadonlyView">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaLoaiDichVu()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>

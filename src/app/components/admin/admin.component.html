@@ -2,29 +2,41 @@
     <h3 class="title">
         Cấp tài khoản
     </h3>
+    <div id="search">
+        <input type="text" placeholder="Tìm kiếm" autocomplete="off" class="me-2" id="input_search"
+            [(ngModel)]="searchText" />
+        <span><i class='bx bx-search-alt-2'></i></span>
+    </div>
     <div class="main-content d-flex">
 
         <div class="display-data">
-            <div id="search">
-                <input type="text" placeholder="Tìm kiếm" autocomplete="off" class="me-2" id="input_search"
-                    [(ngModel)]="searchText" />
-                <span><i class='bx bx-search-alt-2'></i></span>
-            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Tên đăng nhập</th>
-                        <th>Mật khẩu</th>
-                        <th>Vai trò</th>
                         <th>Mã người dùng</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Vai trò</th>
+                        <th>Trạng thái</th>
+                        <th>Thời gian tạo</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let taikhoan of dsTaiKhoan | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
-                        <td>{{taikhoan.tendangnhap}}</td>
-                        <td style="-webkit-text-security: disc">{{taikhoan.matkhau}}</td>
-                        <td>{{taikhoan.vaitro}}</td>
+                    <tr
+                        *ngFor="let taikhoan of dsTaiKhoan | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
                         <td>{{taikhoan.manguoidung}}</td>
+                        <td>{{taikhoan.tendangnhap}}</td>
+                        <td>{{taikhoan.vaitro}}</td>
+                        <td [ngStyle]="taikhoan.trangthai == 'Đang hoạt động' ? {'color': 'green'} : {'color': 'red'}">{{taikhoan.trangthai}}</td>
+                        <td>{{taikhoan.thoigiantao | date}}</td>
+                        <td>
+                            <button mat-icon-button color="primary">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="xoaTaiKhoan(taikhoan.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -35,33 +47,40 @@
         <div class="input-data">
             <h3>Tài khoản</h3>
             <form>
-                <div class="form-group mb-3">
-                    <label>Tên đăng nhập</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="form-group mb-3">
-                    <label>Mật khẩu</label>
-                    <input type="password" class="form-control" />
-                </div>
-                <div class="form-group mb-3">
-                    <label>Vai trò</label>
-                    <select class="form-select">
-                        <option selected>Chọn...</option>
-                        <option value="Sinh viên">Sinh viên</option>
-                        <option value="Cán bộ">Cán bộ</option>
-                        <option value="Quản trị viên">Quản trị viên</option>
-                    </select>
-                </div>
-                <div class="form-group mb-3">
-                    <label>Mã người dùng</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="list-operation">
-                    <button class="btn btn-outline-secondary me-2" (click)="themTaiKhoan()"><i
-                            class='bx bx-book-add me-1'></i>Thêm</button>
-                    <button class="btn btn-outline-secondary"><i class='bx bx-trash me-1'></i>Xóa</button>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Tên đăng nhập</mat-label>
+                    <input matInput placeholder="Tên đăng nhập">
+                    <mat-icon matSuffix color="primary">supervisor_account</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mật khẩu</mat-label>
+                    <input type="password" matInput placeholder="Mật khẩu">
+                    <mat-icon matSuffix color="primary">touch_app</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mã cán bộ/Mã sinh viên</mat-label>
+                    <input matInput placeholder="Mã cán bộ/Mã sinh viên">
+                    <mat-icon matSuffix color="primary">sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <label id="example-radio-group-label">Vai trò</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button" value="1">
+                        Quản trị viên
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="2">
+                        Cán bộ
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="3">
+                        Sinh viên
+                    </mat-radio-button>
+                </mat-radio-group>
             </form>
+            <div class="d-flex justify-content-center">
+                <button mat-raised-button color="primary" class="btnThem">
+                    <mat-icon>perm_contact_calendar</mat-icon>
+                    Thêm tài khoản
+                </button>
+            </div>
         </div>
     </div>
 </div>

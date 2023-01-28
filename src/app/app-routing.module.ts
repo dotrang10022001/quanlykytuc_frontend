@@ -6,7 +6,7 @@ import { TrangchuComponent } from './components/trangchu/trangchu.component';
 import { PhongComponent } from './components/phong/phong.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ThongtincanhanComponent } from './components/thongtincanhan/thongtincanhan.component';
-import { PhananhComponent } from './components/phananh/phananh.component';
+import { PhanAnhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'phong', component: PhongComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'thongtincanhan', component: ThongtincanhanComponent},
-  {path: 'phananh', component: PhananhComponent},
+  {path: 'phananh', component: PhanAnhComponent},
   {path: 'dichvu', component: DichvuComponent},
   {path: 'loaiphong', component: LoaiphongComponent},
   {path: 'dangkyphong', component: DangkyphongComponent},

@@ -5,7 +5,7 @@
     padding: 10px;
 }
 .title{
-    font-family: 'Merienda', cursive;
+    font-family: 'Playfair Display', serif;
     margin-top: 10px;
     font-size: 20px;
     text-align: center;
@@ -22,9 +22,6 @@
     color: black;
     opacity: 0.5;
 }
-h3{
-    font-family: 'Merienda', cursive;
-}
 .text-intro h3{
     font-size: 18px;
 }
@@ -32,7 +29,7 @@ h3{
     font-size: 15px;
 }
 .h-font{
-    font-family: 'Merienda', cursive;
+    font-family: 'Playfair Display', serif;
     font-size: 18px;
 }
 .lead{
@@ -50,3 +47,4 @@ h3{
     height: 150px;
     border-radius: 5px;
 }
+
