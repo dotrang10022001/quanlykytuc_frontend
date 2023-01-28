@@ -1,0 +1,34 @@
+<h3>{{actionBtn}} loại phòng</h3>
+<div mat-dialog-content>
+    <form [formGroup]="lpForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã loại phòng </mat-label>
+            <input matInput formControlName="maloaiphong" placeholder="Mã loại phòng" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tên loại phòng </mat-label>
+            <input matInput formControlName="tenloaiphong" placeholder="Tên loại phòng" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Mô tả </mat-label>
+            <textarea matInput formControlName="mota" [readonly]="isReadonlyView"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Giá </mat-label>
+            <input matInput placeholder="Giá" type="number" formControlName="gia" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Sức chứa </mat-label>
+            <input matInput placeholder="Sức chứa" formControlName="succhua" type="number" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Mã tòa </mat-label>
+            <input matInput placeholder="Mã tòa" formControlName="matoa" readonly="true">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaLoaiPhong()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>

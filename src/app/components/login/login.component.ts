@@ -37,10 +37,27 @@ export class LoginComponent {
             localStorage.setItem('roleId', res.data.roleId);
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('userId', res.data.userId);
-            this.router.navigateByUrl('/trangchu')
-              .then(() => {
-                window.location.reload();
-              });
+            this.loginService.getUserInformation({ roleId: res.data.roleId, userId: res.data.userId }).subscribe((rs: any) => {
+              if (rs.success) {
+                localStorage.setItem('manguoidung', res.data.roleId == 3 ? rs.data.maSinhVien : rs.data.maCanBo);
+                if (res.data.roleId == 2) {
+                  this.loginService.getToa(rs.data.maCanBo).subscribe((r: any) => {
+                    if (r.success) {
+                      localStorage.setItem('maToa', r.data[0].maToa);
+                      this.router.navigateByUrl('/trangchu')
+                        .then(() => {
+                          window.location.reload();
+                        });
+                    }
+                  });
+                } else {
+                  this.router.navigateByUrl('/trangchu')
+                    .then(() => {
+                      window.location.reload();
+                    });
+                }
+              }
+            });
           });
         } else {
           Swal.fire({

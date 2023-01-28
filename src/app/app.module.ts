@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PhongComponent } from './components/phong/phong.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ThongtincanhanComponent } from './components/thongtincanhan/thongtincanhan.component';
-import { PhananhComponent } from './components/phananh/phananh.component';
+import { PhanAnhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
@@ -38,6 +38,8 @@ import {MatCardModule} from '@angular/material/card';
 import { CanboDialogComponent } from './dialogs/canbo-dialog/canbo-dialog.component';
 import { DichvuDialogComponent } from './dialogs/dichvu-dialog/dichvu-dialog.component';
 import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyphong-dialog.component';
+import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
+import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,7 @@ import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyp
     PhongComponent,
     AdminComponent,
     ThongtincanhanComponent,
-    PhananhComponent,
+    PhanAnhComponent,
     DichvuComponent,
     LoaiphongComponent,
     DangkyphongComponent,
@@ -56,7 +58,9 @@ import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyp
     SinhvienDialogComponent,
     CanboDialogComponent,
     DichvuDialogComponent,
-    DangkyphongDialogComponent
+    DangkyphongDialogComponent,
+    LoaiPhongDialogComponent,
+    PhanAnhDialogComponent
   ],
   imports: [
     BrowserModule,

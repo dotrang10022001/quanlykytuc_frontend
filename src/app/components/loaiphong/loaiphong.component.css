@@ -3,10 +3,18 @@
     position: relative;
 }
 
-.title {
+.title{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.title h3{
     font-family: 'Merienda', cursive;
     margin-top: 10px;
     font-size: 20px;
+}
+.title h3:last-child{
+    border: solid 2px grey;
 }
 .content-data{
     width: 100%;
@@ -16,7 +24,7 @@
 }
 .example-card {
     width: 330px;
-    height: 430px;
+    height: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.322);
     position: relative;
     margin-left: auto; 
@@ -24,10 +32,10 @@
     cursor: pointer;
   }
 img{
-    width: 300px;
-    height: 200px;
-    margin-left: 15px;
-    margin-right: 15px;
+    width: 200px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 8px;
 }
 .card-header{
@@ -39,7 +47,7 @@ img{
     width: 100%;
     background-color: #fff;
 }
-mat-card-title{
+mat-card-title p{
     border: grey solid 2px;
     padding: 0 2px;
     margin-bottom: 4px;
@@ -97,4 +105,18 @@ mat-card-content p{
 .btnThem{
     position: absolute;
     right: 30px;
+}
+.left-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+.pagination{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
 }

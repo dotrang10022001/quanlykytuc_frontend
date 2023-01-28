@@ -83,6 +83,10 @@ export class DichvuComponent {
           width: '40%',
           height: '85%',
           data: {data: dataView, type: 'edit'}
+        }).afterClosed().subscribe((val)=>{
+          if(val === 'Cập nhật'){
+            this.getDanhSachLoaiDichVu();
+          }
         });
       }
       if(res.errors){

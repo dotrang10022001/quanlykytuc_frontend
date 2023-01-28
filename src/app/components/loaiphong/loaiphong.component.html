@@ -1,91 +1,56 @@
 <div class="content-loaiphong">
-    <h3 class="title">
-        Loại phòng
+  <div class="d-flex" class="title">
+    <h3>
+      Loại phòng
     </h3>
-    <div class="search-and-add">
-        <button mat-raised-button color="primary" class="btnThem">
-            <mat-icon>perm_contact_calendar</mat-icon>
-            Thêm loại phòng
-        </button>
-        <div class="search d-flex">
-          <i class='bx bx-filter-alt'></i>
-          <input placeholder="Ví dụ: CB001" #input>
-        </div>
-        </div>
-    <div class="content-data row">
-        <div class="col-lg-4 mt-3">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <div class="card-header">
-                <mat-card-subtitle>Phòng loại A - Tòa B6</mat-card-subtitle>
-                <mat-card-title>B6-A</mat-card-title>
-                </div>
-            </mat-card-header>
-            <img mat-card-image src="../../../assets/images/loaiphong/loaiphong1.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                Phòng có nhà vệ sinh khép kín, giường 2 tầng, có quạt trần, tủ cá nhân.  
-              </p>
-              <div class="card-footer">
-                <p><b>Giá phòng</b>: 1400000 đ/kỳ</p>
-                <p><b>Sức chứa</b>: 8 <i class='bx bxs-user'></i></p>
-              </div>
-              <div class='list-icon'>
-                <span><i class='bx bx-show me-2'></i></span>
-                <span><i class='bx bxs-edit-alt me-2'></i></span>
-                <span><i class='bx bxs-trash' ></i></span>
+    <h3 class="title">
+      {{maToa}}
+    </h3>
+  </div>
+  <div class="search-and-add">
+    <button mat-raised-button color="primary" (click)="openDialog()" class="btnThem" *ngIf="role.startsWith('manager')">
+      <mat-icon>perm_contact_calendar</mat-icon>
+      Thêm loại phòng
+    </button>
+    <div class="search d-flex">
+      <i class='bx bx-filter-alt'></i>
+      <input placeholder="Ví dụ: Cơ bản, ..." [(ngModel)]="searchText" #input>
+    </div>
+  </div>
+  <div class="content-data row">
+    <div class="col-lg-4 mt-3"
+      *ngFor="let lp of dsLoaiPhong | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div class="card-header">
+            <div class="d-flex" class="left-header">
+              <mat-card-title>{{lp.tenLoaiPhong}}</mat-card-title>
+              <mat-card-subtitle>{{lp.maLoaiPhong}}</mat-card-subtitle>
             </div>
-            </mat-card-content>
-          </mat-card>
+            <mat-card-title>
+              <p>{{lp.maToa}}</p>
+            </mat-card-title>
           </div>
-          <div class="col-lg-4 mt-3">
-            <mat-card class="example-card">
-                <mat-card-header>
-                  <div class="card-header">
-                    <mat-card-subtitle>Phòng loại A - Tòa B6</mat-card-subtitle>
-                    <mat-card-title>B6-A</mat-card-title>
-                    </div>
-                </mat-card-header>
-                <img mat-card-image src="../../../assets/images/loaiphong/loaiphong1.jpg" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                  <p>
-                    Phòng có nhà vệ sinh khép kín, giường 2 tầng, có quạt trần, tủ cá nhân.  
-                  </p>
-                  <div class="card-footer">
-                    <p><b>Giá phòng</b>: 1400000 đ/kỳ</p>
-                    <p><b>Sức chứa</b>: 8 <i class='bx bxs-user'></i></p>
-                  </div>
-                  <div class='list-icon'>
-                    <span><i class='bx bx-show me-2'></i></span>
-                    <span><i class='bx bxs-edit-alt me-2'></i></span>
-                    <span><i class='bx bxs-trash' ></i></span>
-                </div>
-                </mat-card-content>
-              </mat-card>
-              </div>
-              <div class="col-lg-4 mt-3">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                      <div class="card-header">
-                        <mat-card-subtitle>Phòng loại A - Tòa B6</mat-card-subtitle>
-                        <mat-card-title>B6-A</mat-card-title>
-                        </div>
-                    </mat-card-header>
-                    <img mat-card-image src="../../../assets/images/loaiphong/loaiphong1.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        Phòng có nhà vệ sinh khép kín, giường 2 tầng, có quạt trần, tủ cá nhân.  
-                      </p>
-                      <div class="card-footer">
-                        <p><b>Giá phòng</b>: 1400000 đ/kỳ</p>
-                        <p><b>Sức chứa</b>: 8 <i class='bx bxs-user'></i></p>
-                      </div>
-                      <div class='list-icon'>
-                        <span><i class='bx bx-show me-2'></i></span>
-                        <span><i class='bx bxs-edit-alt me-2'></i></span>
-                        <span><i class='bx bxs-trash' ></i></span>
-                    </div>
-                    </mat-card-content>
-                  </mat-card>
-                  </div>
+        </mat-card-header>
+        <img mat-card-image src="../../../assets/images/loaiphong1.jpg">
+        <mat-card-content>
+          <p>
+            {{lp.moTa}}
+          </p>
+          <div class="card-footer">
+            <p><b>Giá phòng</b>: {{lp.gia | number}} đồng/kỳ</p>
+            <p><b>Sức chứa</b>: {{lp.sucChua}} <i class='bx bxs-user'></i></p>
+          </div>
+          <div class='list-icon'>
+            <span><i class='bx bx-show me-2' (click)="xemLoaiPhong(lp.id)"></i></span>
+            <span><i class='bx bxs-edit-alt me-2' (click)="suaLoaiPhong(lp.id)" *ngIf="role.startsWith('manager')"></i></span>
+            <span><i class='bx bxs-trash' (click)="xoaLoaiPhong(lp.id)" *ngIf="role.startsWith('manager')"></i></span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+  </div>
 </div>

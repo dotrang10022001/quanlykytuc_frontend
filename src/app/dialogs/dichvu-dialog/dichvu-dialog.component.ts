@@ -33,7 +33,7 @@ export class DichvuDialogComponent {
     this.dvForm = this.formBuilder.group({
       maloaidichvu: ['', Validators.required],
       tenloaidichvu: ['', Validators.required],
-      mota: ['', Validators.required],
+      mota: [''],
       donvitinh: ['', Validators.required],
       dongia: ['', Validators.required],
       anh: [''],

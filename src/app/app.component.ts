@@ -22,6 +22,10 @@ export class AppComponent {
     localStorage.removeItem('role');
     localStorage.removeItem('roleId');
     localStorage.removeItem('userId');
+    localStorage.removeItem('manguoidung');
+    if(Number(localStorage.getItem('roleId')) == 2){
+      localStorage.removeItem('maToa');
+    }
     this.router.navigateByUrl('/login')
       .then(() => {
         window.location.reload();
