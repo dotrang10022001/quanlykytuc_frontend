@@ -40,6 +40,7 @@ import { DichvuDialogComponent } from './dialogs/dichvu-dialog/dichvu-dialog.com
 import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyphong-dialog.component';
 import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
+import { PhongDialogComponent } from './dialogs/phong-dialog/phong-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.
     DichvuDialogComponent,
     DangkyphongDialogComponent,
     LoaiPhongDialogComponent,
-    PhanAnhDialogComponent
+    PhanAnhDialogComponent,
+    PhongDialogComponent
   ],
   imports: [
     BrowserModule,

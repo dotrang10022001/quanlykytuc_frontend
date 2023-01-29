@@ -37,3 +37,16 @@ table {
     outline: none;
     border-bottom: 1px solid grey;
 }
+.mat-mdc-table .mdc-data-table__header-row {
+    background-color: #13a07d;
+    height: 50px;
+}
+.mdc-data-table__header-cell{
+    color: white;
+}
+.mat-mdc-table .mdc-data-table__row:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+.mat-mdc-table{
+    border-radius: 4px;
+}

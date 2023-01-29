@@ -1,0 +1,20 @@
+<h3>{{actionBtn}} phòng</h3>
+<div mat-dialog-content>
+    <form [formGroup]="pForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã phòng </mat-label>
+            <input matInput formControlName="maphong" placeholder="Mã phòng" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Mã loại phòng</mat-label>
+            <mat-select formControlName="maloaiphong">
+              <mat-option *ngFor="let lp of dsLoaiPhong" [value]="lp.maLoaiPhong">{{lp.maLoaiPhong}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaPhong()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>
