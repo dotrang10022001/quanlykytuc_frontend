@@ -1,0 +1,55 @@
+<h3>{{ actionBtn }} chi tiết</h3>
+<h3>{{ this.data.data.forumTitle }}</h3>
+<div mat-dialog-content>
+  <form [formGroup]="cbForm">
+    <!-- <label id="anh-label">Ảnh * </label> -->
+    <p class="title">{{ this.data.data.forumCaption }}</p>
+    <br />
+    <img [src]="imageUrlPreview" id="imagePreview" />
+    <br /><br />
+    <br />
+  </form>
+</div>
+<div class="write-comment">
+  <mat-form-field appearance="outline" style="margin-top: 20px;">
+    <!-- <mat-label>Mã cán bộ </mat-label> -->
+    <input matInput formControlName="macanbo" placeholder="Nhập bình luận" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    style="margin-right: 10px; margin-left:10px; height: 50px;"
+  >
+    Gửi bình luận
+  </button>
+</div>
+<div class="comment-list">
+  <div class="row">
+    <div
+      class="col-lg-12 mb-12"
+      *ngFor="let comment of commentList | filter : searchText"
+    >
+    <br /><br />
+
+    <div class="card">
+      <div class="card-header">
+        {{comment.commentName}}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{comment.commentContent}}</p>
+        <h5 class="card-title">{{comment.creationTime | date}}</h5>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+  <button
+    mat-raised-button
+    color="warn"
+    mat-dialog-close
+    style="margin-right: 8px"
+  >
+    Đóng
+  </button>
+</div>

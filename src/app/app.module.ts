@@ -16,6 +16,7 @@ import { PhanAnhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -40,6 +41,7 @@ import { DichvuDialogComponent } from './dialogs/dichvu-dialog/dichvu-dialog.com
 import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyphong-dialog.component';
 import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
+import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +56,15 @@ import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.
     DichvuComponent,
     LoaiphongComponent,
     DangkyphongComponent,
+    ForumComponent,
     SinhvienComponent,
     SinhvienDialogComponent,
     CanboDialogComponent,
     DichvuDialogComponent,
     DangkyphongDialogComponent,
     LoaiPhongDialogComponent,
-    PhanAnhDialogComponent
+    PhanAnhDialogComponent,
+    ForumDialogComponent
   ],
   imports: [
     BrowserModule,
