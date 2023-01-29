@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DichvuDialogComponent } from 'src/app/dialogs/dichvu-dialog/dichvu-dialog.component';
 import { DichVu } from 'src/app/models/dichvu.model';
 import { DichvuService } from 'src/app/services/dichvu/dichvu.service';
@@ -17,7 +18,7 @@ export class DichvuComponent {
   currentPage: number=1;
   itemsPerPage: number=6;
 
-  constructor (public dialog: MatDialog, private dvService: DichvuService){
+  constructor (public dialog: MatDialog, private dvService: DichvuService, private router: Router){
     if (localStorage.getItem('role')) {
       let data = localStorage.getItem('role');
       if (data != null) this.role = data.toString();
@@ -130,6 +131,10 @@ export class DichvuComponent {
         });
       }
     })
+  }
+
+  navigateToSDDV(){
+    this.router.navigateByUrl('/sudungdichvu');
   }
 
 }

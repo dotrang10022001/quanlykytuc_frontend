@@ -14,7 +14,7 @@
 }
 
 .SearchAndAdd{
-    width: 95%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -28,7 +28,7 @@
 }
 .search-wrap{
     position: absolute;
-    right: 0px;
+    left: 0px;
 }
 .SearchAndAdd span i{
     position: absolute;

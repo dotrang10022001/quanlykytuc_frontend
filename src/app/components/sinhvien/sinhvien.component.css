@@ -43,6 +43,8 @@ table {
 }
 .mdc-data-table__header-cell{
     color: white;
+    font-family: 'Merienda', cursive;
+    font-weight: bold;
 }
 .mat-mdc-table .mdc-data-table__row:nth-of-type(even){
     background-color: #f3f3f3;

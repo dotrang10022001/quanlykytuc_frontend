@@ -1,0 +1,57 @@
+<h3>{{actionBtn}} thông tin sử dụng dịch vụ</h3>
+<div mat-dialog-content>
+    <form [formGroup]="sddvForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã đối tượng sử dụng </mat-label>
+            <input matInput formControlName="madoituongsudung" placeholder="Mã đối tượng sử dụng" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Loại dịch vụ</mat-label>
+            <mat-select formControlName="maloaidichvu">
+              <mat-option *ngFor="let dv of dsLoaiDichVu" [value]="dv.maLoaiDichVu">{{dv.tenLoaiDichVu}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <label id="loaidoituong-label">Loại đối tượng </label>
+        <mat-radio-group aria-labelledby="loaidoituong-label" formControlName="loaidoituong">
+            <mat-radio-button value="1" [disabled]="isReadonlyView">
+                Sinh viên/Cán bộ
+            </mat-radio-button>
+            <mat-radio-button value="2" [disabled]="isReadonlyView">
+                Phòng/Toà
+            </mat-radio-button>
+        </mat-radio-group>
+        <br/><br/>
+        <mat-form-field appearance="outline">
+            <mat-label>Lượng sử dụng </mat-label>
+            <input matInput formControlName="luongsudung" type="number" placeholder="Lượng sử dụng" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <label id="trangthai-label">Trạng thái </label>
+        <mat-radio-group aria-labelledby="trangthai-label" formControlName="trangthai">
+            <mat-radio-button value="0" [disabled]="isReadonlyView">
+                Chưa hoàn thành
+            </mat-radio-button>
+            <mat-radio-button value="1" [disabled]="isReadonlyView">
+                Hoàn thành
+            </mat-radio-button>
+        </mat-radio-group>
+        <br/><br/>
+        <mat-form-field appearance="outline">
+            <mat-label> Thời gian bắt đầu </mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="thoigianbatdau" [readonly]="isReadonlyView">
+            <mat-datepicker-toggle matIconSuffix [for]="picker1" [disabled]="isReadonlyView"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Thời gian kết thúc </mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="thoigianketthuc" [readonly]="isReadonlyView">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2" [disabled]="isReadonlyView"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="themHoacSuaSDDV()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>

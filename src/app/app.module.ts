@@ -41,6 +41,8 @@ import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyp
 import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
 import { PhongDialogComponent } from './dialogs/phong-dialog/phong-dialog.component';
+import { SudungdichvuComponent } from './components/sudungdichvu/sudungdichvu.component';
+import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudungdichvu-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { PhongDialogComponent } from './dialogs/phong-dialog/phong-dialog.compon
     DangkyphongDialogComponent,
     LoaiPhongDialogComponent,
     PhanAnhDialogComponent,
-    PhongDialogComponent
+    PhongDialogComponent,
+    SudungdichvuComponent,
+    SudungdichvuDialogComponent
   ],
   imports: [
     BrowserModule,

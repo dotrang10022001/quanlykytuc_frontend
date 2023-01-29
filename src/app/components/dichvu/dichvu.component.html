@@ -1,7 +1,12 @@
 <div class="content-dichvu">
-  <h3 class="title">
-    Loại dịch vụ
-  </h3>
+  <div class="header">
+    <h3 class="title">
+      Loại dịch vụ
+    </h3>
+    <h3 class="title" *ngIf="!role.startsWith('guest')">
+      <a (click)="navigateToSDDV()">Sử dụng dịch vụ <i class='bx bx-log-in-circle'></i></a>
+    </h3>
+  </div>
   <div class="search-and-add">
     <button *ngIf="role.startsWith('admin')" mat-raised-button color="primary" (click)="openDialog()" class="btnThem">
       <mat-icon>perm_contact_calendar</mat-icon>
