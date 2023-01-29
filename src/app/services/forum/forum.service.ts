@@ -8,7 +8,7 @@ import { Forum } from 'src/app/models/forum.model';
 export class ForumService {
 
   // baseUrl: string="https://65.108.79.164:7201/api/services/app/Forum/";
-  baseUrl: string="https://localhost:7200/api/services/app/Forum/";
+  baseUrl: string="https://65.108.79.164:7201/api/services/app/Forum/";
 
 
   constructor(private httpClient: HttpClient) { }

@@ -42,6 +42,7 @@ import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyp
 import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
 import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
+import { NgxLoadingModule } from "ngx-loading";
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.compon
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    NgxLoadingModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]
