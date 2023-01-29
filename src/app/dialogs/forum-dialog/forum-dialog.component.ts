@@ -60,4 +60,7 @@ export class ForumDialogComponent {
     reader.readAsDataURL(this.fileToUpload);
   }
   name: string='';
+  handleUploadImage(event: any){
+
+  }
 }
