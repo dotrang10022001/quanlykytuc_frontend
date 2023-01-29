@@ -11,10 +11,10 @@
     </div>
     </div>
     <div class="content-data">
-          
+
           <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
-          
+
               <ng-container matColumnDef="macanbo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã cán bộ</th>
                 <td mat-cell *matCellDef="let row"> {{row.maCanBo}} </td>
@@ -22,19 +22,19 @@
 
               <ng-container matColumnDef="anh">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Ảnh </th>
-                <td mat-cell *matCellDef="let row"> <img src="../../../assets/images/background1.jpg" width="70px" height="70px"/> </td>
+                <td mat-cell *matCellDef="let row"> <img src={{row.imageUrl}} width="70px" height="70px"/> </td>
               </ng-container>
-          
+
               <ng-container matColumnDef="hoten">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Họ tên </th>
                 <td mat-cell *matCellDef="let row"> {{row.hoTen}} </td>
               </ng-container>
-        
+
               <ng-container matColumnDef="gioitinh">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Giới tính </th>
                 <td mat-cell *matCellDef="let row"> {{row.gioiTinh}} </td>
               </ng-container>
-          
+
               <ng-container matColumnDef="ngaysinh">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày sinh </th>
                 <td mat-cell *matCellDef="let row"> {{row.ngaySinh | date}} </td>
@@ -59,17 +59,31 @@
                   </button>
                 </td>
               </ng-container>
-          
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
+
               <!-- Row shown when there is no matching data. -->
               <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="7" style="text-align: center">Không có cán bộ nào chứa dữ liệu "{{input.value}}"</td>
               </tr>
             </table>
-          
+
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
           </div>
     </div>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
 </div>

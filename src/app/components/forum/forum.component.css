@@ -1,0 +1,39 @@
+.content-canbo {
+  padding: 10px 30px;
+  position: relative;
+}
+.title {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+}
+.btnThem{
+  position: absolute;
+  right: 30px;
+}
+table {
+width: 100%;
+}
+.content-data{
+  margin-top: 40px;
+}
+.search{
+  position: relative;
+}
+.search input{
+  height: 30px;
+  font-size: 14px;
+  background-color: #dfe9f5;
+  border: none;
+  border-bottom: grey solid 1px;
+  margin-left: 30px;
+}
+.search i{
+  font-size: 20px;
+  position: absolute;
+  bottom: 5px;
+
+}
+.search input:focus{
+  outline: none;
+  border-bottom: 1px solid grey;
+}
