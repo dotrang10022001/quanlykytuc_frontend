@@ -6,7 +6,7 @@ export interface Forum{
   posterRole: string,
   forumTitle: string,
   forumCaption: string,
-  imageUrl: string,
+  imageUrl: string | null,
   state: number,
   type: number
 }

@@ -1,0 +1,42 @@
+<h3>Tạo bài viết mới</h3>
+<div mat-dialog-content>
+    <form [formGroup]="frForm">
+        <label id="anh-label">Ảnh * </label>
+        <br/>
+        <img [src]="imageUrlPreview" id="imagePreview"/>
+        <br/><br/>
+        <input type="file" class="form-control" formControlName="anh" accept=".jpg, .png" (change)="handleFileInput($event)">
+        <br/>
+        <mat-form-field appearance="outline">
+            <mat-label>Tên người đăng</mat-label>
+            <input matInput formControlName="posterName" placeholder="Tên người đăng" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tiêu đề</mat-label>
+            <input matInput formControlName="forumTitle" placeholder="Tiêu đề" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Nội dung bài viết</mat-label>
+          <input matInput formControlName="forumCaption" placeholder="Nội dung chi tiết" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+      </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="createNewForum()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
+</div>

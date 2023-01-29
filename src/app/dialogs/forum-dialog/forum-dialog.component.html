@@ -1,27 +1,32 @@
 <h3>{{ actionBtn }} chi tiết</h3>
 <h3>{{ this.data.data.forumTitle }}</h3>
 <div mat-dialog-content>
-  <form [formGroup]="cbForm">
+  <form [formGroup]="fcForm">
     <!-- <label id="anh-label">Ảnh * </label> -->
     <p class="title">{{ this.data.data.forumCaption }}</p>
     <br />
     <img [src]="imageUrlPreview" id="imagePreview" />
     <br /><br />
     <br />
+    <div class="write-comment">
+      <mat-form-field appearance="outline" style="margin-top: 20px;margin-right: 5px; flex:1;">
+        <!-- <mat-label>Mã cán bộ </mat-label> -->
+        <input matInput formControlName="commentName" placeholder="Tên hiển thị" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-top: 20px; flex: 2;">
+        <!-- <mat-label>Mã cán bộ </mat-label> -->
+        <input matInput formControlName="commentContent" placeholder="Nhập bình luận" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-right: 10px; margin-left:10px; height: 50px;"
+        (click)="createNewComment()"
+      >
+        Gửi bình luận
+      </button>
+    </div>
   </form>
-</div>
-<div class="write-comment">
-  <mat-form-field appearance="outline" style="margin-top: 20px;">
-    <!-- <mat-label>Mã cán bộ </mat-label> -->
-    <input matInput formControlName="macanbo" placeholder="Nhập bình luận" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
-  </mat-form-field>
-  <button
-    mat-raised-button
-    color="primary"
-    style="margin-right: 10px; margin-left:10px; height: 50px;"
-  >
-    Gửi bình luận
-  </button>
 </div>
 <div class="comment-list">
   <div class="row">
@@ -52,4 +57,18 @@
   >
     Đóng
   </button>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
 </div>

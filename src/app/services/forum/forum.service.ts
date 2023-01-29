@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Forum } from 'src/app/models/forum.model';
+import { ForumComment } from 'src/app/models/forum-comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,9 @@ export class ForumService {
   }
   getDanhSachForumComment(forumId: number){
     return this.httpClient.get<any>(this.baseUrl + "GetForumComment?forumId=" + forumId);
+  }
+  createForumComment(forumComment: ForumComment){
+    return this.httpClient.post<any>(this.baseUrl + "CreateOrUpdateForumComment", forumComment);
   }
   xoaForum(id: number){
     return this.httpClient.delete<any>(this.baseUrl + "DeleteForum?id=" + id);

@@ -43,6 +43,7 @@ import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-d
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
 import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
 import { NgxLoadingModule } from "ngx-loading";
+import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create-forum-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { NgxLoadingModule } from "ngx-loading";
     DangkyphongDialogComponent,
     LoaiPhongDialogComponent,
     PhanAnhDialogComponent,
-    ForumDialogComponent
+    ForumDialogComponent,
+    CreateForumDialogComponent
   ],
   imports: [
     BrowserModule,

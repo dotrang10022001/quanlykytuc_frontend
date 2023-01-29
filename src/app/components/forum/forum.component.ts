@@ -9,6 +9,7 @@ import { CanboService } from 'src/app/services/canbo/canbo.service';
 import { CanboDialogComponent } from 'src/app/dialogs/canbo-dialog/canbo-dialog.component';
 import { ForumDialogComponent } from 'src/app/dialogs/forum-dialog/forum-dialog.component';
 import { ForumService } from 'src/app/services/forum/forum.service';
+import { CreateForumDialogComponent } from 'src/app/dialogs/create-forum-dialog/create-forum-dialog.component';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -22,7 +23,7 @@ export class ForumComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private forumService: ForumService){
+  constructor(public dialog: MatDialog,private forumService: ForumService){
 
   }
   ngOnInit(){
@@ -55,7 +56,7 @@ export class ForumComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ForumDialogComponent, {
+    this.dialog.open(CreateForumDialogComponent, {
       width: '40%',
       height: '85%'
     }).afterClosed().subscribe((val)=>{
@@ -72,50 +73,4 @@ export class ForumComponent implements OnInit {
       data: {data: row, type: 'view'}
     });
   }
-
-  suaCanBo(row: any){
-    this.dialog.open(ForumDialogComponent,{
-      width: '40%',
-      height: '85%',
-      data: {data: row, type: 'edit'}
-    }).afterClosed().subscribe((val)=>{
-      if(val === 'Cập nhật'){
-        this.getDanhSachCanBo();
-      }
-    });
-  }
-
-  xoaCanBo(row: any){
-    Swal.fire({
-      title: 'Bạn chắc chắn muốn xóa cán bộ này?',
-      text: "Bạn sẽ không thể hoàn tác. Hãy cẩn thận.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Hủy',
-      confirmButtonText: 'Xóa'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.forumService.xoaForum(row.id).subscribe((res)=>{
-          if(res){
-            Swal.fire(
-              'Đã xóa',
-              'Cán bộ bạn chọn đã được xóa.',
-              'success'
-            ).then((result)=>{
-              this.getDanhSachCanBo();
-            });
-          }
-          error: ()=>{
-            Swal.fire(
-              'Lỗi xảy ra khi xóa cán bộ.',
-              'error'
-            )
-          }
-        });
-      }
-    })
-  }
-
 }
