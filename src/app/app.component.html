@@ -20,6 +20,12 @@
                 </a>
             </li>
             <li>
+              <a routerLink="forum">
+                  <i class='bx bx-news'></i>
+                  <span class="nav-item">Diễn đàn - Tin tức</span>
+              </a>
+          </li>
+            <li>
                 <a routerLink="phong">
                     <i class='bx bx-bed'></i>
                     <span class="nav-item">Thông tin phòng</span>
@@ -74,7 +80,7 @@
                     <span class="nav-item">Đăng xuất</span>
                 </a>
             </li>
-    
+
         </ul>
     </nav>
     <nav *ngIf="role == 'guest'">
@@ -121,7 +127,7 @@
                     <span class="nav-item">Đăng nhập</span>
                 </a>
             </li>
-    
+
         </ul>
     </nav>
     <div class="content">

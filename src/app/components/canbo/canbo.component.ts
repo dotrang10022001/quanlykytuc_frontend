@@ -16,14 +16,16 @@ import { CanboDialogComponent } from 'src/app/dialogs/canbo-dialog/canbo-dialog.
 export class CanboComponent{
   displayedColumns: string[] = ['macanbo', 'anh', 'hoten', 'gioitinh', 'ngaysinh', 'chucvu', 'hanhdong'];
   dataSource!: MatTableDataSource<any>;
+  public loading = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public dialog: MatDialog, private cbService: CanboService){
-    
+
   }
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachCanBo();
   }
 
@@ -33,8 +35,10 @@ export class CanboComponent{
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách cán bộ thất bại!',
