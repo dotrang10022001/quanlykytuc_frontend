@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PhanAnhService {
 
-  baseUrl: string="http://65.108.79.164:7200/api/services/app/PhanAnh/";
+  baseUrl: string="https://65.108.79.164:7201/api/services/app/PhanAnh/";
 
   constructor(private httpClient: HttpClient) { }
 

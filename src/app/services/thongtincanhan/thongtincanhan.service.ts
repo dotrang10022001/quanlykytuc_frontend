@@ -10,6 +10,6 @@ export class ThongtincanhanService {
   constructor(private http: HttpClient) { }
 
   getThongTinCaNhan(obj: any):Observable<any>{
-    return this.http.post('http://65.108.79.164:7200/api/services/app/Account/GetUserInformation', obj);
+    return this.http.post('https://65.108.79.164:7201/api/services/app/Account/GetUserInformation', obj);
   }
 }
