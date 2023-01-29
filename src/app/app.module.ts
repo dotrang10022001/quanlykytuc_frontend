@@ -16,6 +16,7 @@ import { PhanAnhComponent } from './components/phananh/phananh.component';
 import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -43,6 +44,9 @@ import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.
 import { PhongDialogComponent } from './dialogs/phong-dialog/phong-dialog.component';
 import { SudungdichvuComponent } from './components/sudungdichvu/sudungdichvu.component';
 import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudungdichvu-dialog.component';
+import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
+import { NgxLoadingModule } from "ngx-loading";
+import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create-forum-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,7 @@ import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudun
     DichvuComponent,
     LoaiphongComponent,
     DangkyphongComponent,
+    ForumComponent,
     SinhvienComponent,
     SinhvienDialogComponent,
     CanboDialogComponent,
@@ -66,7 +71,9 @@ import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudun
     PhanAnhDialogComponent,
     PhongDialogComponent,
     SudungdichvuComponent,
-    SudungdichvuDialogComponent
+    SudungdichvuDialogComponent,
+    ForumDialogComponent,
+    CreateForumDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +98,8 @@ import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudun
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    NgxLoadingModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

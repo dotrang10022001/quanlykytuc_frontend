@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  public loading = false;
   loginObj: any = {
     username: '',
     password: '',
@@ -18,7 +19,9 @@ export class LoginComponent {
   }
 
   onLogin() {
+    this.loading = true;
     if (this.loginObj.username == '' || this.loginObj.password == '') {
+      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: 'Đăng nhập thất bại!',
@@ -29,6 +32,7 @@ export class LoginComponent {
     } else {
       this.loginService.onLogin(this.loginObj).subscribe((res: any) => {
         if (res.success && res.data.isActive) {
+          this.loading = false;
           Swal.fire({
             icon: 'success',
             title: 'Đăng nhập thành công!',
@@ -60,6 +64,7 @@ export class LoginComponent {
             });
           });
         } else {
+          this.loading = false;
           Swal.fire({
             icon: 'error',
             title: 'Đăng nhập thất bại!',
