@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AdminAccountDialogComponent } from 'src/app/dialogs/admin-account-dialog/admin-account-dialog.component';
 import { CreateAccount } from 'src/app/models/create-account.model';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import Swal from 'sweetalert2';
@@ -25,7 +27,8 @@ export class AdminComponent {
   constructor(
     private adminService: AdminService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -173,5 +176,16 @@ export class AdminComponent {
       });
     }
     this.loading = false;
+  }
+  suaTaiKhoan(row: any){
+    this.dialog.open(AdminAccountDialogComponent,{
+      width: '40%',
+      height: '50%',
+      data: {data: row, type: 'edit'}
+    }).afterClosed().subscribe((val)=>{
+      if(val === 'Cập nhật'){
+        // this.getDanhSachCanBo();
+      }
+    });
   }
 }

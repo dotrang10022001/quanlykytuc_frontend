@@ -1,0 +1,66 @@
+<h3>Chỉnh sửa tài khoản</h3>
+<div mat-dialog-content>
+  <form [formGroup]="acForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Mật khẩu mới</mat-label>
+      <input
+        matInput
+        formControlName="newPassword"
+        placeholder="Nhập mật khẩu mới - Để trống nếu không muốn thay đổi"
+        [readonly]="false"
+      />
+    </mat-form-field>
+    <label id="gioi-tinh-label">Trạng Thái</label>
+    <mat-radio-group formControlName="state">
+      <mat-radio-button value="true" [disabled]="false">
+        Hoạt động
+      </mat-radio-button>
+      <mat-radio-button value="false" [disabled]="false">
+        Đã khóa
+      </mat-radio-button>
+    </mat-radio-group>
+    <br />
+
+    <label id="gioi-tinh-label"> Vai trò</label>
+    <mat-radio-group aria-labelledby="gioi-tinh-label" formControlName="roleID">
+      <mat-radio-button value="3" [disabled]="false">
+        Sinh Viên
+      </mat-radio-button>
+      <mat-radio-button value="2" [disabled]="false"> Cán Bộ </mat-radio-button>
+      <mat-radio-button value="1" [disabled]="false"> Admin </mat-radio-button>
+    </mat-radio-group>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+  <button
+    mat-raised-button
+    color="warn"
+    mat-dialog-close
+    style="margin-right: 8px"
+  >
+    Hủy
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    style="margin-right: 8px"
+    (click)="suaTaiKhoan()"
+    *ngIf="actionBtn != 'Xem'"
+  >
+    {{ actionBtn }}
+  </button>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
+</div>

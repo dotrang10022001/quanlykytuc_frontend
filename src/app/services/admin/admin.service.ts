@@ -19,9 +19,11 @@ export class AdminService {
   }
 
   taoTaiKhoan(obj: any){
-    return this.httpClient.post<any>("https://localhost:7200/api/services/app/Account/" + "AdminCreateAccount", obj);
+    return this.httpClient.post<any>(this.baseUrl + "AdminCreateAccount", obj);
   }
-
+  suaTaiKhoan(obj: any){
+    return this.httpClient.post<any>(this.baseUrl + "AdminUpdateAccount", obj);
+  }
   getThongTinCaNhan(obj: any){
     return this.httpClient.post<any>(this.baseUrl + "GetUserInformation", obj);
   }
