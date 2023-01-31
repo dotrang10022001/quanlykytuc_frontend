@@ -18,3 +18,10 @@ label{
 mat-radio-group{
     margin-bottom: 20px;
 }
+#imagePreview{
+  width: 200px;
+  height: 200px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+  border: 2px solid grey;
+}

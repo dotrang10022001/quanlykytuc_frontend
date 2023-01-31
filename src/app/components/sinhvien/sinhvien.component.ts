@@ -14,6 +14,7 @@ import { SinhVien } from 'src/app/models/sinhvien.model';
   styleUrls: ['./sinhvien.component.css']
 })
 export class SinhvienComponent{
+  public loading = false;
   displayedColumns: string[] = ['masinhvien', 'hoten', 'gioitinh', 'ngaysinh', 'sodienthoai', 'email', 'hanhdong'];
   dataSource!: MatTableDataSource<any>;
 
@@ -21,9 +22,10 @@ export class SinhvienComponent{
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public dialog: MatDialog, private svService: SinhvienService){
-    
+
   }
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachSinhVien();
   }
 
@@ -33,8 +35,10 @@ export class SinhvienComponent{
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách sinh viên thất bại!',
