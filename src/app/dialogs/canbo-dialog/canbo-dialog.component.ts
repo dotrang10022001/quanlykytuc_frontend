@@ -4,7 +4,7 @@ import { Canbo } from 'src/app/models/canbo.model';
 import { CanboService } from 'src/app/services/canbo/canbo.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { S3Handler } from 'src/app/services/image/test';
+import { S3Handler } from 'src/app/services/image/aws-bucket.service';
 
 @Component({
   selector: 'app-canbo-dialog',

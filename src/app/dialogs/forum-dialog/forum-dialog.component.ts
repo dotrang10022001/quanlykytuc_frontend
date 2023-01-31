@@ -5,7 +5,7 @@ import { CanboService } from 'src/app/services/canbo/canbo.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ForumService } from 'src/app/services/forum/forum.service';
-import { S3Handler } from 'src/app/services/image/test';
+import { S3Handler } from 'src/app/services/image/aws-bucket.service';
 import { ForumComment } from 'src/app/models/forum-comment.model';
 
 @Component({

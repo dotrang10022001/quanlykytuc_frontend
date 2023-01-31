@@ -1,32 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoaiPhong } from 'src/app/models/loaiphong.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaiPhongService {
 
-  baseUrl: string="https://65.108.79.164:7201/api/services/app/LoaiPhong/";
+  baseUrl: string=environment.server_api + "/LoaiPhong";
 
   constructor(private httpClient: HttpClient) { }
 
   themHoacSuaLoaiPhong(lp: LoaiPhong){
-    return this.httpClient.post<any>(this.baseUrl + "CreateOrUpdateLoaiPhong", lp);
+    return this.httpClient.post<any>(this.baseUrl + "/CreateOrUpdateLoaiPhong", lp);
   }
 
   getDanhSachLoaiPhong(){
-    return this.httpClient.get<any>(this.baseUrl + "GetLoaiPhong");
+    return this.httpClient.get<any>(this.baseUrl + "/GetLoaiPhong");
   }
 
   getDSLPTheoMaToa(maToa: any){
-    return this.httpClient.get<any>(this.baseUrl + "GetLoaiPhong?MaToa=" + maToa);
+    return this.httpClient.get<any>(this.baseUrl + "/GetLoaiPhong?MaToa=" + maToa);
   }
   xoaLoaiPhong(id: number){
-    return this.httpClient.delete<any>(this.baseUrl + "DeleteLoaiPhong?id=" + id);
+    return this.httpClient.delete<any>(this.baseUrl + "/DeleteLoaiPhong?id=" + id);
   }
 
   getLoaiPhongById(id: number){
-    return this.httpClient.get<any>(this.baseUrl + "GetLoaiPhong?Id=" + id);
+    return this.httpClient.get<any>(this.baseUrl + "/GetLoaiPhong?Id=" + id);
   }
 }

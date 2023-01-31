@@ -1,30 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  baseUrl: string="https://65.108.79.164:7201/api/services/app/Account/";
+  baseUrl: string=environment.server_api + "/Account";
 
   constructor(private httpClient: HttpClient) { }
 
   getDanhSachTaiKhoan(){
-    return this.httpClient.get<any>(this.baseUrl + "GetAllAccount");
+    return this.httpClient.get<any>(this.baseUrl + "/GetAllAccount");
   }
 
   xoaTaiKhoan(id: number){
-    return this.httpClient.delete<any>(this.baseUrl + "DeleteAccount?id=" + id);
+    return this.httpClient.delete<any>(this.baseUrl + "/DeleteAccount?id=" + id);
   }
 
   taoTaiKhoan(obj: any){
-    return this.httpClient.post<any>(this.baseUrl + "AdminCreateAccount", obj);
+    return this.httpClient.post<any>(this.baseUrl + "/AdminCreateAccount", obj);
   }
   suaTaiKhoan(obj: any){
-    return this.httpClient.post<any>(this.baseUrl + "AdminUpdateAccount", obj);
+    return this.httpClient.post<any>(this.baseUrl + "/AdminUpdateAccount", obj);
   }
   getThongTinCaNhan(obj: any){
-    return this.httpClient.post<any>(this.baseUrl + "GetUserInformation", obj);
+    return this.httpClient.post<any>(this.baseUrl + "/GetUserInformation", obj);
   }
 }
