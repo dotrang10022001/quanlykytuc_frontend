@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DangKyPhong } from 'src/app/models/dangkyphong.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DangkyphongService {
 
-  baseUrl: string="https://65.108.79.164:7201/api/services/app/";
+  baseUrl: string=environment.server_api;
 
   constructor(private httpClient: HttpClient) { }
 
