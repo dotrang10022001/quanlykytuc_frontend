@@ -14,6 +14,7 @@ import { SuDungDichVu } from 'src/app/models/sudungdichvu.model';
   styleUrls: ['./sudungdichvu.component.css']
 })
 export class SudungdichvuComponent{
+  public loading = false;
   displayedColumns?: string[];
   dataSource!: MatTableDataSource<any>;
   loaiDoiTuong: number = 1;
@@ -31,6 +32,7 @@ export class SudungdichvuComponent{
     }
   }
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachSDDV();
     if(this.role.startsWith('manager')){
       this.displayedColumns = ['madoituong', 'tendichvu', 'luongsudung', 'donvitinh', 'dongia', 'tongtien', 'trangthai', 'hanhdong'];
@@ -45,8 +47,10 @@ export class SudungdichvuComponent{
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách thông tin sử dụng dịch vụ thất bại!',

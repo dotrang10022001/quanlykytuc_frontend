@@ -1,6 +1,12 @@
 <h3>{{actionBtn}} sinh viên</h3>
 <div mat-dialog-content>
     <form [formGroup]="svForm">
+        <label id="anh-label">Ảnh * </label>
+        <br/>
+        <img [src]="imageUrlPreview" id="imagePreview"/>
+        <br/><br/>
+        <input type="file" class="form-control" formControlName="anh" accept=".jpg, .png" (change)="handleFileInput($event)">
+        <br/>
         <mat-form-field appearance="outline">
             <mat-label>Mã sinh viên </mat-label>
             <input matInput formControlName="masinhvien" placeholder="Mã sinh viên" [readonly]="(isReadonlyEdit=='true'||isReadonlyView=='true')?'true':'false'">
@@ -62,4 +68,18 @@
     <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
     <button mat-raised-button color="primary" style="margin-right: 8px"
         (click)="themHoacSuaSinhVien()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
 </div>

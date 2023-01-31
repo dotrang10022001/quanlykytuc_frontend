@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./dichvu.component.css']
 })
 export class DichvuComponent {
+  public loading = false;
   role: string="guest";
   dsDichVu: DichVu[] = [];
   searchText: any;
@@ -26,6 +27,7 @@ export class DichvuComponent {
   }
 
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachLoaiDichVu();
   }
 
@@ -33,8 +35,10 @@ export class DichvuComponent {
     this.dvService.getDanhSachLoaiDichVu().subscribe((res: any)=>{
       if(res.success){
         this.dsDichVu = res.data;
+        this.loading=false;
       }
       if(res.errors){
+        this.loading=false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách dịch vụ thất bại!',
@@ -72,7 +76,7 @@ export class DichvuComponent {
         });
       }
     })
-    
+
   }
 
   suaLoaiDichVu(id: number){
@@ -97,7 +101,7 @@ export class DichvuComponent {
         });
       }
     })
-    
+
   }
 
   xoaLoaiDichVu(id: number){

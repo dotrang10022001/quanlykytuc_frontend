@@ -9,6 +9,7 @@ export interface SinhVien{
     khoa: string;
     vien: string;
     lop: string;
+    imageUrl: string;
     hoTenCha: string;
     hoTenMe: string;
     noiThuongTru: string;

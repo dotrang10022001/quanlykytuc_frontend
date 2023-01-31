@@ -17,6 +17,7 @@ import { CreateForumDialogComponent } from 'src/app/dialogs/create-forum-dialog/
 })
 export class ForumComponent implements OnInit {
 
+  public loading = false;
   displayedColumns: string[] = ['nguoidang','tieude','anh', 'sophanhoi', 'ngaytao', 'hanhdong'];
   dataSource!: MatTableDataSource<any>;
 
@@ -27,6 +28,7 @@ export class ForumComponent implements OnInit {
 
   }
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachCanBo();
   }
 
@@ -36,8 +38,10 @@ export class ForumComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách cán bộ thất bại!',

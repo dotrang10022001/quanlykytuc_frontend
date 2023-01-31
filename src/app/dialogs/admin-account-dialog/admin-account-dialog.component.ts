@@ -93,6 +93,7 @@ export class AdminAccountDialogComponent {
             title: ' Sửa tài khoản thành công!',
           }).then((result) => {
             this.acForm.reset();
+            this.dialogRef.close(this.actionBtn);
           });
         }
         if (res.errors) {

@@ -8,7 +8,7 @@ import { SinhVien } from 'src/app/models/sinhvien.model';
 export class SinhvienService {
 
   baseUrl: string="https://65.108.79.164:7201/api/services/app/Student/";
-
+  // baseUrl: string="https://localhost:7200/api/services/app/Student/";
   constructor(private httpClient: HttpClient) { }
 
   themHoacSuaSinhVien(sv: SinhVien){
