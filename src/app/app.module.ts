@@ -41,12 +41,12 @@ import { DichvuDialogComponent } from './dialogs/dichvu-dialog/dichvu-dialog.com
 import { DangkyphongDialogComponent } from './dialogs/dangkyphong-dialog/dangkyphong-dialog.component';
 import { LoaiPhongDialogComponent } from './dialogs/loaiphong-dialog/loaiphong-dialog.component';
 import { PhanAnhDialogComponent } from './dialogs/phananh-dialog/phananh-dialog.component';
-import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
-import { NgxLoadingModule } from "ngx-loading";
-import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create-forum-dialog.component';
 import { PhongDialogComponent } from './dialogs/phong-dialog/phong-dialog.component';
 import { SudungdichvuComponent } from './components/sudungdichvu/sudungdichvu.component';
 import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudungdichvu-dialog.component';
+import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
+import { NgxLoadingModule } from "ngx-loading";
+import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create-forum-dialog.component';
 
 @NgModule({
   declarations: [
@@ -69,11 +69,11 @@ import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudun
     DangkyphongDialogComponent,
     LoaiPhongDialogComponent,
     PhanAnhDialogComponent,
-    ForumDialogComponent,
-    CreateForumDialogComponent,
     PhongDialogComponent,
     SudungdichvuComponent,
-    SudungdichvuDialogComponent
+    SudungdichvuDialogComponent,
+    ForumDialogComponent,
+    CreateForumDialogComponent
   ],
   imports: [
     BrowserModule,

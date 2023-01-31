@@ -26,7 +26,9 @@ const routes: Routes = [
   {path: 'dichvu', component: DichvuComponent},
   {path: 'loaiphong', component: LoaiphongComponent},
   {path: 'dangkyphong', component: DangkyphongComponent},
-  {path: 'sinhvien', component: SinhvienComponent}
+  {path: 'sinhvien', component: SinhvienComponent},
+  {path: 'sudungdichvu', component: SudungdichvuComponent},
+  {path: 'forum', component: ForumComponent}
 ];
 
 @NgModule({
