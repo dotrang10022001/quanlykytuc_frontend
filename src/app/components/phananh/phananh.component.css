@@ -45,14 +45,14 @@
 }
 .btnThem{
     position: absolute;
-    left: 30px;
+    right: 30px;
     background-color: #13a07d;
     border: none;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35px;
+    height: 40px;
     border-radius: 4px;
     padding-left: 16px;
     padding-right: 16px;

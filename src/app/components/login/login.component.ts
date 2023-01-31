@@ -44,6 +44,7 @@ export class LoginComponent {
             this.loginService.getUserInformation({ roleId: res.data.roleId, userId: res.data.userId }).subscribe((rs: any) => {
               if (rs.success) {
                 localStorage.setItem('manguoidung', res.data.roleId == 3 ? rs.data.maSinhVien : rs.data.maCanBo);
+                localStorage.setItem('hoten', rs.data.hoTen);
                 if (res.data.roleId == 2) {
                   this.loginService.getToa(rs.data.maCanBo).subscribe((r: any) => {
                     if (r.success) {

@@ -64,7 +64,6 @@ export class SinhvienDialogComponent {
     this.isReadonlyEdit = 'false';
     this.isReadonlyView = 'false';
     if (this.data) {
-      console.log(this.data);
       this.imageUrlPreview = this.data.data.imageUrl;
       this.actionBtn = this.data.type == 'edit' ? 'Cập nhật' : 'Xem';
       this.svForm.controls['masinhvien'].setValue(this.data.data.maSinhVien);

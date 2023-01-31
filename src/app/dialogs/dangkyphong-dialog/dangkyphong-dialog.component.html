@@ -1,1 +1,50 @@
-<p>dangkyphong-dialog works!</p>
+<h3>{{actionBtn}} đăng ký phòng</h3>
+<div mat-dialog-content>
+    <form [formGroup]="dkForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Mã sinh viên </mat-label>
+            <input matInput formControlName="masinhvien" placeholder="Mã sinh viên" [readonly]="!role.startsWith('guest')">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Họ tên </mat-label>
+            <input matInput formControlName="hoten" placeholder="Họ tên" [readonly]="!role.startsWith('guest')">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Mã tòa</mat-label>
+            <mat-select formControlName="matoa">
+              <mat-option *ngFor="let t of dsToa" [value]="t.maToa">{{t.maToa}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Mã phòng </mat-label>
+            <input matInput formControlName="maphong" placeholder="Mã phòng" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Kỳ </mat-label>
+            <input matInput formControlName="ky" placeholder="Kỳ" [readonly]="isReadonlyView">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Thông tin bổ sung(Ghi chú) </mat-label>
+            <textarea matInput formControlName="thongtinbosung" [readonly]="isReadonlyView"></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'" style="margin-top: 10px">
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-right: 8px">Hủy</button>
+    <button mat-raised-button color="primary" style="margin-right: 8px"
+        (click)="taoHoacCapNhatDonDangKy()" *ngIf="actionBtn != 'Xem'">{{actionBtn}}</button>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
+</div>
