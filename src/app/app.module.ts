@@ -47,6 +47,7 @@ import { SudungdichvuDialogComponent } from './dialogs/sudungdichvu-dialog/sudun
 import { ForumDialogComponent } from './dialogs/forum-dialog/forum-dialog.component';
 import { NgxLoadingModule } from "ngx-loading";
 import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create-forum-dialog.component';
+import { AdminAccountDialogComponent } from './dialogs/admin-account-dialog/admin-account-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { CreateForumDialogComponent } from './dialogs/create-forum-dialog/create
     SudungdichvuComponent,
     SudungdichvuDialogComponent,
     ForumDialogComponent,
-    CreateForumDialogComponent
+    CreateForumDialogComponent,
+    AdminAccountDialogComponent
   ],
   imports: [
     BrowserModule,

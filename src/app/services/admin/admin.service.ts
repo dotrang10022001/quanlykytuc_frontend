@@ -18,6 +18,12 @@ export class AdminService {
     return this.httpClient.delete<any>(this.baseUrl + "DeleteAccount?id=" + id);
   }
 
+  taoTaiKhoan(obj: any){
+    return this.httpClient.post<any>(this.baseUrl + "AdminCreateAccount", obj);
+  }
+  suaTaiKhoan(obj: any){
+    return this.httpClient.post<any>(this.baseUrl + "AdminUpdateAccount", obj);
+  }
   getThongTinCaNhan(obj: any){
     return this.httpClient.post<any>(this.baseUrl + "GetUserInformation", obj);
   }

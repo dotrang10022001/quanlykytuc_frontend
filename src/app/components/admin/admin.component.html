@@ -30,7 +30,7 @@
                         <td [ngStyle]="taikhoan.trangthai == 'Đang hoạt động' ? {'color': 'green'} : {'color': 'red'}">{{taikhoan.trangthai}}</td>
                         <td>{{taikhoan.thoigiantao | date}}</td>
                         <td>
-                            <button mat-icon-button color="primary">
+                            <button mat-icon-button color="primary"(click)="suaTaiKhoan(taikhoan)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                             <button mat-icon-button color="warn" (click)="xoaTaiKhoan(taikhoan.id)">
@@ -46,24 +46,24 @@
         </div>
         <div class="input-data">
             <h3>Tài khoản</h3>
-            <form>
+            <form [formGroup]="createAccountForm">
                 <mat-form-field appearance="outline">
                     <mat-label>Tên đăng nhập</mat-label>
-                    <input matInput placeholder="Tên đăng nhập">
+                    <input matInput formControlName="userName" placeholder="Tên đăng nhập">
                     <mat-icon matSuffix color="primary">supervisor_account</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Mật khẩu</mat-label>
-                    <input type="password" matInput placeholder="Mật khẩu">
+                    <input type="password" matInput formControlName="password" placeholder="Mật khẩu">
                     <mat-icon matSuffix color="primary">touch_app</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Mã cán bộ/Mã sinh viên</mat-label>
-                    <input matInput placeholder="Mã cán bộ/Mã sinh viên">
+                    <input matInput formControlName="maDoiTuong" placeholder="Mã cán bộ/Mã sinh viên. Điền 'admin' nếu là admin">
                     <mat-icon matSuffix color="primary">sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
                 <label id="example-radio-group-label">Vai trò</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                <mat-radio-group formControlName="roleID" aria-labelledby="example-radio-group-label" class="example-radio-group">
                     <mat-radio-button class="example-radio-button" value="1">
                         Quản trị viên
                     </mat-radio-button>
@@ -76,11 +76,25 @@
                 </mat-radio-group>
             </form>
             <div class="d-flex justify-content-center">
-                <button mat-raised-button color="primary" class="btnThem">
+                <button mat-raised-button color="primary" class="btnThem" (click)="taoTaiKhoan()">
                     <mat-icon>perm_contact_calendar</mat-icon>
                     Thêm tài khoản
                 </button>
             </div>
         </div>
     </div>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
 </div>
