@@ -1,7 +1,7 @@
 <div class="content-dangkyphong" *ngIf="role=='guest'">
     <p class="title">Đăng ký phòng</p>
 
-    <button mat-raised-button color="primary" class="btnThem">
+    <button mat-raised-button color="primary" class="btnThem" (click)="openDialog()">
         <mat-icon>note_add</mat-icon>
         Đăng ký phòng
     </button>
@@ -16,42 +16,121 @@
             <div class="d-flex" style="width: 100%; height: 90%">
                 <div class="left">
                     <div>
-                        <h6>1.Nhà xếp ở</h6>
+                        <h3>1.Nhà xếp ở</h3>
                         <p style="text-indent: 10px">{{thongbao.nhaXepO}}</p>
                     </div>
                     <div>
-                        <h6>2.Thời gian đăng ký và nộp lệ phí</h6>
+                        <h3>2.Thời gian đăng ký và nộp lệ phí</h3>
                         <p style="text-indent: 10px">{{thongbao.thoiGianDangKy}}</p>
                     </div>
                     <div>
-                        <h6>3.Thời gian ở</h6>
+                        <h3>3.Thời gian ở</h3>
                         <p style="text-indent: 10px">{{thongbao.thoiGianO}}</p>
                     </div>
                     <div>
-                        <h6>4.Đối tượng xếp ở</h6>
+                        <h3>4.Đối tượng xếp ở</h3>
                         <p style="text-indent: 10px">{{thongbao.doiTuongXepO}}</p>
                     </div>
                 </div>
                 <div class="right">
                     <div>
-                        <h6>5.Đối tượng ưu tiên</h6>
+                        <h3>5.Đối tượng ưu tiên</h3>
                         <p style="text-indent: 10px">{{thongbao.doiTuongUuTien}}</p>
                     </div>
                     <div>
-                        <h6>6.Các khoản thu lệ phí</h6>
+                        <h3>6.Các khoản thu lệ phí</h3>
                         <p style="text-indent: 10px">{{thongbao.khoanThuLePhi}}</p>
                     </div>
                     <div>
-                        <h6>7.Đăng ký trực tiếp(Nếu muốn)</h6>
+                        <h3>7.Đăng ký trực tiếp(Nếu muốn)</h3>
                         <p style="text-indent: 10px">{{thongbao.dangKyTrucTiep}}</p>
                     </div>
                     <div>
-                        <h6>8.Lưu ý</h6>
+                        <h3>8.Lưu ý</h3>
                         <p style="text-indent: 10px">{{thongbao.luuY}}</p>
                     </div>
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<div class="content-dangkyphong" *ngIf="role!='guest'">
+    <div class="d-flex" class="title">
+        <h3>
+          Đăng ký phòng
+        </h3>
+        <h3 class="title" *ngIf="role.startsWith('manager')">
+          {{maToa}}
+        </h3>
+      </div>
+
+    <button mat-raised-button color="primary" class="btnThem" (click)="openDialog()" *ngIf="role.startsWith('student')">
+        <mat-icon>note_add</mat-icon>
+        Đăng ký phòng
+    </button>
+
+    <div class="d-flex SearchAndAdd">
+        <div class="search-wrap"><input type="text" placeholder="Tìm kiếm" id="search" autocomplete="off" [(ngModel)]="searchText"/><span><i
+            class='bx bx-search-alt-2'></i></span></div>
+    </div>
+
+    <div class="data-dangkysinhvien d-flex">
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã sinh viên</th>
+                        <th>Mã phòng</th>
+                        <th>Mã tòa</th>
+                        <th>Kỳ</th>
+                        <th>Thời điểm đăng ký</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dk of dsDangKySV | filter : searchText | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
+                        <td>{{dk.maSinhVien}}</td>
+                        <td>{{dk.maPhong}}</td>
+                        <td>{{dk.maToa}}</td>
+                        <td>{{dk.ky}}</td>
+                        <td>{{dk.thoiDiemDK | date}}</td>
+                        <td *ngIf="dk.trangThai == 0" style="color: grey; font-weight: bold; font-size: 16px;">Chờ duyệt</td>
+                        <td *ngIf="dk.trangThai == 1" style="color: green; font-weight: bold; font-size: 16px;">Được chấp nhận</td>
+                        <td *ngIf="dk.trangThai == 0">
+                            <button mat-icon-button color="primary" (click)="xemDonDK(dk.id)">
+                                <mat-icon>visibility</mat-icon>
+                            </button>
+
+
+                            <button mat-icon-button color="primary" (click)="suaDonDK(dk.id)" *ngIf="role.startsWith('student')">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+
+
+                            <button mat-icon-button color="primary" (click)="accept(dk.id)" *ngIf="!role.startsWith('student')">
+                                <mat-icon>done_outline</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" (click)="deny(dk.id)" *ngIf="!role.startsWith('student')">
+                                <mat-icon>remove_circle_outline</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" (click)="xoaDonDK(dk.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                        <td *ngIf="dk.trangThai != 0">
+                            <button mat-icon-button color="primary" (click)="xemDonDK(dk.id)">
+                                <mat-icon>visibility</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

@@ -3,7 +3,33 @@
     padding-top: 10px;
     position: relative;
 }
-
+.SearchAndAdd{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#search{
+    height: 40px;
+    background-color: #dfe9f5;
+    border: none;
+    border-bottom: solid 2px grey;
+    width: 250px;
+}
+.search-wrap{
+    position: absolute;
+    left: 40px;
+}
+.SearchAndAdd span i{
+    position: absolute;
+    bottom: 0;
+    font-size: 30px;
+    color: grey;
+}
+#search:focus{
+    outline: none;
+    border-bottom: solid 2px black;
+}
 .title {
     font-family: 'Merienda', cursive;
     font-size: 20px;
@@ -11,7 +37,7 @@
 }
 .btnThem{
     position: absolute;
-    right: 30px;
+    right: 40px;
 }
 .decor{
     width: 30%;
@@ -63,4 +89,74 @@ span{
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
+}
+.data-dangkysinhvien{
+    width: 95%;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+    padding: 10px;
+}
+.data-dangkysinhvien .content{
+    width: 100%;
+    position: relative;
+}
+table{
+    width: 100%;
+    cursor: pointer;
+}
+th, td{
+    text-align: center;
+}
+tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+tr{
+    height: 35px;
+    border-bottom: solid 1px #ccc9c9;
+}
+tr:last-of-type{
+    border-bottom: solid 4px #13a07d;
+}
+thead{
+    background-color: #13a07d;
+    height: 40px;
+    font-family: 'Merienda', cursive;
+    color: white;
+}
+thead tr{
+    border-bottom: #13a07d solid 1px;
+}
+tr:hover{
+    background-color: #d3d0d0;
+}
+thead tr:hover{
+    background-color: #13a07d;
+}
+
+.pagination{
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+}
+.title{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.title h3{
+    font-family: 'Merienda', cursive;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.title h3:last-child{
+    border: solid 2px grey;
+    margin-right: 40px;
+}
+h3{
+    font-family: 'Merienda', cursive;
 }

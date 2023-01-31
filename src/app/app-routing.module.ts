@@ -11,8 +11,8 @@ import { DichvuComponent } from './components/dichvu/dichvu.component';
 import { LoaiphongComponent } from './components/loaiphong/loaiphong.component';
 import { DangkyphongComponent } from './components/dangkyphong/dangkyphong.component';
 import { SinhvienComponent } from './components/sinhvien/sinhvien.component';
-import { SudungdichvuComponent } from './components/sudungdichvu/sudungdichvu.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { SudungdichvuComponent } from './components/sudungdichvu/sudungdichvu.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'trangchu', pathMatch: 'full'},

@@ -23,6 +23,7 @@ export class AppComponent {
     localStorage.removeItem('roleId');
     localStorage.removeItem('userId');
     localStorage.removeItem('manguoidung');
+    localStorage.removeItem('hoten');
     if(Number(localStorage.getItem('roleId')) == 2){
       localStorage.removeItem('maToa');
     }
