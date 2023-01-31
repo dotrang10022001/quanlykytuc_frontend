@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./phananh.component.css']
 })
 export class PhanAnhComponent {
+  public loading = false;
   role: string="guest";
   dsPhanAnh: any=[];
   searchText: any;
@@ -24,6 +25,7 @@ export class PhanAnhComponent {
   }
 
   ngOnInit(){
+    this.loading = true;
     this.getDanhSachPhanAnh();
   }
 
@@ -48,8 +50,10 @@ export class PhanAnhComponent {
             }
           );
         });
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách phản ánh thất bại!',
@@ -70,11 +74,13 @@ export class PhanAnhComponent {
   }
 
   capNhatTrangThai(id: number){
+    this.loading = true;
     this.paService.getPhanAnhById(id).subscribe((res: any)=>{
       if(res.success){
         res.data[0].trangThai = 1 - res.data[0].trangThai;
         this.paService.themHoacSuaPhanAnh(res.data[0]).subscribe((rs: any)=>{
           if(rs.success){
+            this.loading = false;
             Swal.fire({
               icon: 'success',
               title: res.data[0].trangThai == 1 ? 'Cập nhật trạng thái thành công!' : 'Hoàn tác thành công',
@@ -83,6 +89,7 @@ export class PhanAnhComponent {
             });
           }
           if(rs.errors){
+            this.loading = false;
             Swal.fire({
               icon: 'error',
               title: res.data[0].trangThai == 1 ? 'Cập nhật trạng thái thất bại!' : 'Hoàn tác thất bại',
@@ -90,13 +97,16 @@ export class PhanAnhComponent {
           }
         })
       }
+      this.loading = false;
     })
   }
 
   suaPhanAnh(id: number){
+    this.loading = true;
     var dataView;
     this.paService.getPhanAnhById(id).subscribe((res)=>{
       if(res.success){
+        this.loading = false;
         dataView = res.data;
         this.dialog.open(PhanAnhDialogComponent, {
           width: '40%',
@@ -109,13 +119,14 @@ export class PhanAnhComponent {
         });
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy thông tin phản ánh thất bại!',
         });
       }
     })
-    
+
   }
 
   xoaPhanAnh(id: number){
@@ -130,8 +141,10 @@ export class PhanAnhComponent {
       confirmButtonText: 'Xóa'
     }).then((result) => {
       if (result.isConfirmed) {
+        this.loading = true;
         this.paService.xoaPhanAnh(id).subscribe((res)=>{
           if(res){
+            this.loading = false;
             Swal.fire(
               'Đã xóa',
               'Phản ánh bạn yêu cầu đã được xóa.',
@@ -141,6 +154,7 @@ export class PhanAnhComponent {
             });
           }
           error: ()=>{
+            this.loading = false;
             Swal.fire(
               'Lỗi xảy ra khi xóa phản ánh.',
               'error'

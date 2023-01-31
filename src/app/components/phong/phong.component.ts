@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./phong.component.css']
 })
 export class PhongComponent {
+  public loading = false;
   role: string="guest";
   dsPhong: Phong[] = [];
   searchText: any;
@@ -26,6 +27,7 @@ export class PhongComponent {
   }
 
   ngOnInit(){
+    this.loading = true;
     if(this.maToa == '') this.getDanhSachPhong();
     else {
       this.getDSPTheoMaToa();
@@ -36,9 +38,11 @@ export class PhongComponent {
     this.pService.getDSPTheoMaToa(localStorage.getItem('maToa')).subscribe((res: any)=>{
       if(res.success){
         this.dsPhong = res.data;
+        this.loading = false;
         console.log(res.data);
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách phòng thất bại!',
@@ -51,8 +55,10 @@ export class PhongComponent {
     this.pService.getDanhSachPhong().subscribe((res: any)=>{
       if(res.success){
         this.dsPhong = res.data;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách phòng thất bại!',
@@ -94,7 +100,7 @@ export class PhongComponent {
         });
       }
     })
-    
+
   }
 
   xoaPhong(id: number){

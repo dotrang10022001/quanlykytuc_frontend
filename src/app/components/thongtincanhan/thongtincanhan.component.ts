@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./thongtincanhan.component.css']
 })
 export class ThongtincanhanComponent {
+  public loading = false;
   objData: any={
     userId: '',
     roleId: '',
@@ -29,14 +30,17 @@ export class ThongtincanhanComponent {
   }
 
   ngOnInit(){
+    this.loading = true;
     this.getThongTinCaNhan(this.objData);
   }
 
   getThongTinCaNhan(obj: any){
     this.ttcnService.getThongTinCaNhan(obj).subscribe((res: any)=>{
       if(res.success){
+        this.loading = false;
         this.data = res.data;
       }else{
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy thông tin thất bại!',

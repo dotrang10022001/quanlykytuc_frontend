@@ -109,7 +109,7 @@ export class ForumDialogComponent {
         text: 'Làm ơn kiểm tra lại, chú ý các trường bắt buộc có dấu *',
       });
     }
-    this.loading = true;
+    this.loading = false;
   }
 
   handleFileInput(event: any) {

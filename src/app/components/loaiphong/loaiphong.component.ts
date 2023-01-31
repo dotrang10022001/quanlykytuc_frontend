@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./loaiphong.component.css']
 })
 export class LoaiphongComponent {
+  public loading = false;
   role: string="guest";
   dsLoaiPhong: LoaiPhong[] = [];
   searchText: any;
@@ -26,6 +27,7 @@ export class LoaiphongComponent {
   }
 
   ngOnInit(){
+    this.loading = true;
     if(this.maToa == '') this.getDanhSachLoaiPhong();
     else {
       this.getDSLPTheoMaToa();
@@ -36,9 +38,11 @@ export class LoaiphongComponent {
     this.lpService.getDSLPTheoMaToa(localStorage.getItem('maToa')).subscribe((res: any)=>{
       if(res.success){
         this.dsLoaiPhong = res.data;
+        this.loading = false;
         console.log(res.data);
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách loại phòng thất bại!',
@@ -51,8 +55,10 @@ export class LoaiphongComponent {
     this.lpService.getDanhSachLoaiPhong().subscribe((res: any)=>{
       if(res.success){
         this.dsLoaiPhong = res.data;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách loại phòng thất bại!',
@@ -90,7 +96,7 @@ export class LoaiphongComponent {
         });
       }
     })
-    
+
   }
 
   suaLoaiPhong(id: number){
@@ -115,7 +121,7 @@ export class LoaiphongComponent {
         });
       }
     })
-    
+
   }
 
   xoaLoaiPhong(id: number){

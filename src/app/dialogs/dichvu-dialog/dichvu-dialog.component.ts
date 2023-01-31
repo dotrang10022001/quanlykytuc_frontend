@@ -11,6 +11,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./dichvu-dialog.component.css']
 })
 export class DichvuDialogComponent {
+  public loading = false;
   role: string="guest";
   dvForm !: FormGroup;
   dv: DichVu={
@@ -49,7 +50,7 @@ export class DichvuDialogComponent {
       this.dvForm.controls['donvitinh'].setValue(dt.donViTinh);
       this.dvForm.controls['dongia'].setValue(dt.donGia);
       //this.dvForm.controls['anh'].setValue(dt.imageUrl);
-      
+
       if(this.data.type=='edit') this.isReadonlyEdit = 'true';
       else this.isReadonlyView = 'true';
     }
@@ -66,6 +67,7 @@ export class DichvuDialogComponent {
   name: string='';
 
   themHoacSuaLoaiDichVu(){
+    this.loading = true;
     if(this.data){
       this.dv.id = this.data.data[0].id;
     } else{
@@ -77,9 +79,10 @@ export class DichvuDialogComponent {
       this.dv.moTa = this.dvForm.value.mota;
       this.dv.donViTinh = this.dvForm.value.donvitinh;
       this.dv.donGia = this.dvForm.value.dongia;
-      
+
       this.dvService.themHoacSuaLoaiDichVu(this.dv).subscribe((res: any)=>{
         if(res.success){
+          this.loading = false;
           Swal.fire({
             icon: 'success',
             title: '' + this.actionBtn + ' dịch vụ thành công!',
@@ -89,6 +92,7 @@ export class DichvuDialogComponent {
           });
         }
         if(res.errors){
+          this.loading = false;
           Swal.fire({
             icon: 'error',
             title: '' + this.actionBtn + ' dịch vụ thất bại!',
@@ -96,6 +100,7 @@ export class DichvuDialogComponent {
         }
       });
     }else{
+      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: 'Dữ liệu nhập vào không hợp lệ. Làm ơn kiểm tra lại.',
