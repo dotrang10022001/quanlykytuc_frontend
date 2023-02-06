@@ -38,6 +38,9 @@ export class DangkyphongComponent {
   }
   ngOnInit(){
     this.loading = true;
+    if(this.role.startsWith('guest')){
+      this.loading = false;
+    }
     if(this.role.startsWith('student')){
       this.getDanhSachDKTheoMSV();
     }
@@ -54,8 +57,10 @@ export class DangkyphongComponent {
     this.dkService.getDanhSachDangKy().subscribe((res: any)=>{
       if(res.success){
         this.dsDangKySV = res.data;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách đăng ký thất bại!',
@@ -68,8 +73,10 @@ export class DangkyphongComponent {
     this.dkService.getDSDKTheoMSSV(localStorage.getItem('manguoidung')).subscribe((res: any)=>{
       if(res.success){
         this.dsDangKySV = res.data;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách đăng ký thất bại!',
@@ -82,8 +89,10 @@ export class DangkyphongComponent {
     this.dkService.getDSDKTheoMaToa(localStorage.getItem('maToa')).subscribe((res: any)=>{
       if(res.success){
         this.dsDangKySV = res.data;
+        this.loading = false;
       }
       if(res.errors){
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Lấy danh sách đăng ký thất bại!',

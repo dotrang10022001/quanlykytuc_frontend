@@ -61,7 +61,7 @@
         <h3>
           Đăng ký phòng
         </h3>
-        <h3 class="title" *ngIf="role.startsWith('manager')">
+        <h3 class="title matoa" *ngIf="role.startsWith('manager')">
           {{maToa}}
         </h3>
       </div>
@@ -133,4 +133,18 @@
             </div>
         </div>
     </div>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <!-- <h3>Loading...</h3> -->
+      <!-- <button (click)="showAlert()">Click me!</button> -->
+    </div>
+  </ng-template>
+
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
 </div>
